@@ -1,8 +1,8 @@
 ## Hi there 👋
-
+<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/wWWdjXaXrR">https://t.co/wWWdjXaXrR</a></p>&mdash; Ex0 Byte (@Ex0_Byte) <a href="https://x.com/Ex0_Byte/status/2061940492317626635?ref_src=twsrc%5Etfw">June 2, 2026</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 <!--
-**BlackhatShiftey/BlackhatShiftey** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
+**Black<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/wWWdjXaXrR">https://t.co/wWWdjXaXrR</a></p>&mdash; Ex0 Byte (@Ex0_Byte) <a 
+ 
 Here are some ideas to get you started:
 
 - 🔭 I’m currently working on ...
