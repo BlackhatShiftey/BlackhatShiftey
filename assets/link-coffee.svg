@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="54" viewBox="0 0 230 54" role="img" aria-labelledby="title desc">
+  <title id="title">Buy Me a Coffee link button</title>
+  <desc id="desc">Animated support button for Buy Me a Coffee.</desc>
+  <rect width="230" height="54" rx="10" fill="#05070a"/>
+  <rect x="1" y="1" width="228" height="52" rx="9" fill="none" stroke="#facc15" stroke-opacity="0.75"/>
+  <rect x="-60" y="0" width="60" height="54" fill="#facc15" opacity="0.16">
+    <animate attributeName="x" from="-70" to="240" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="24" cy="27" r="6" fill="#facc15">
+    <animate attributeName="opacity" values="0.35;1;0.35" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="42" y="24" fill="#f8fafc" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">BUY ME A COFFEE</text>
+  <text x="42" y="40" fill="#9fb8b1" font-family="Consolas, Menlo, monospace" font-size="12">ex0_byte</text>
+</svg>

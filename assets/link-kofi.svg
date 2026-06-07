@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="54" viewBox="0 0 210 54" role="img" aria-labelledby="title desc">
+  <title id="title">Ko-fi link button</title>
+  <desc id="desc">Animated support button for Ko-fi.</desc>
+  <rect width="210" height="54" rx="10" fill="#05070a"/>
+  <rect x="1" y="1" width="208" height="52" rx="9" fill="none" stroke="#ff5f5f" stroke-opacity="0.7"/>
+  <rect x="-60" y="0" width="60" height="54" fill="#ff5f5f" opacity="0.16">
+    <animate attributeName="x" from="-70" to="220" dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="24" cy="27" r="6" fill="#ff5f5f">
+    <animate attributeName="opacity" values="0.35;1;0.35" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <text x="42" y="24" fill="#f8fafc" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">KO-FI</text>
+  <text x="42" y="40" fill="#9fb8b1" font-family="Consolas, Menlo, monospace" font-size="12">terrabyte1000</text>
+</svg>

@@ -1,21 +1,13 @@
 <div align="center">
 
-# BlackhatShiftey
+<img src="./assets/terminal-banner.svg" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
 
-**AI Architect | Python | Security Automation**
+<br>
 
-<a href="https://x.com/Ex0_Byte">
-  <img src="https://img.shields.io/badge/X-Ex0__Byte-000000?style=for-the-badge&logo=x&logoColor=white" alt="X: Ex0_Byte">
-</a>
-<a href="https://ko-fi.com/terrabyte1000">
-  <img src="https://img.shields.io/badge/Ko--fi-terrabyte1000-ff5f5f?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi: terrabyte1000">
-</a>
-<a href="https://www.patreon.com/cw/Ex0_Byte">
-  <img src="https://img.shields.io/badge/Patreon-Ex0__Byte-f96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon: Ex0_Byte">
-</a>
-<a href="https://buymeacoffee.com/ex0_byte">
-  <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-ex0__byte-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee: ex0_byte">
-</a>
+<a href="https://x.com/Ex0_Byte"><img src="./assets/link-x.svg" alt="X: Ex0_Byte" height="54"></a>
+<a href="https://ko-fi.com/terrabyte1000"><img src="./assets/link-kofi.svg" alt="Ko-fi: terrabyte1000" height="54"></a>
+<a href="https://www.patreon.com/cw/Ex0_Byte"><img src="./assets/link-patreon.svg" alt="Patreon: Ex0_Byte" height="54"></a>
+<a href="https://buymeacoffee.com/ex0_byte"><img src="./assets/link-coffee.svg" alt="Buy Me a Coffee: ex0_byte" height="54"></a>
 
 </div>
 
@@ -30,6 +22,10 @@ status        Designing, testing, and shipping useful tools.
 ```
 
 I build AI-assisted systems, automation workflows, and security-minded developer tools. My lane is where Python, agents, infrastructure, and defensive automation overlap.
+
+<div align="center">
+  <img src="./assets/cyber-divider.svg" alt="" width="100%">
+</div>
 
 ## Operator Dashboard
 
@@ -46,6 +42,10 @@ I build AI-assisted systems, automation workflows, and security-minded developer
 - Automating repetitive security and development tasks with Python.
 - Turning rough ideas into tools, dashboards, and repo-ready projects.
 - Keeping the signal high: useful systems, working links, readable docs.
+
+<div align="center">
+  <img src="./assets/cyber-divider.svg" alt="" width="100%">
+</div>
 
 ## Core Stack
 
@@ -76,6 +76,10 @@ idea
   -> document the useful parts
 ```
 
+<div align="center">
+  <img src="./assets/cyber-divider.svg" alt="" width="100%">
+</div>
+
 ## GitHub Telemetry
 
 <div align="center">
@@ -95,15 +99,9 @@ If something here helps you build, automate, or learn, support keeps the lab run
 
 <div align="center">
 
-<a href="https://ko-fi.com/terrabyte1000">
-  <img src="https://img.shields.io/badge/Ko--fi-Support_the_lab-ff5f5f?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi">
-</a>
-<a href="https://www.patreon.com/cw/Ex0_Byte">
-  <img src="https://img.shields.io/badge/Patreon-Back_the_build-f96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Support on Patreon">
-</a>
-<a href="https://buymeacoffee.com/ex0_byte">
-  <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-Fuel_the_work-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy me a coffee">
-</a>
+<a href="https://ko-fi.com/terrabyte1000"><img src="./assets/link-kofi.svg" alt="Support on Ko-fi" height="54"></a>
+<a href="https://www.patreon.com/cw/Ex0_Byte"><img src="./assets/link-patreon.svg" alt="Support on Patreon" height="54"></a>
+<a href="https://buymeacoffee.com/ex0_byte"><img src="./assets/link-coffee.svg" alt="Buy me a coffee" height="54"></a>
 
 </div>
 
@@ -111,9 +109,3 @@ If something here helps you build, automate, or learn, support keeps the lab run
 
 - X: [@Ex0_Byte](https://x.com/Ex0_Byte)
 - GitHub: [BlackhatShiftey](https://github.com/BlackhatShiftey)
-
-<div align="center">
-
-![Profile Views](https://komarev.com/ghpvc/?username=BlackhatShiftey&style=flat-square&color=0e75b6)
-
-</div>

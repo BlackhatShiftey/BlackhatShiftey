@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="54" viewBox="0 0 180 54" role="img" aria-labelledby="title desc">
+  <title id="title">X link button</title>
+  <desc id="desc">Animated link button for Ex0_Byte on X.</desc>
+  <rect width="180" height="54" rx="10" fill="#05070a"/>
+  <rect x="1" y="1" width="178" height="52" rx="9" fill="none" stroke="#22d3ee" stroke-opacity="0.65"/>
+  <rect x="-60" y="0" width="60" height="54" fill="#22d3ee" opacity="0.16">
+    <animate attributeName="x" from="-70" to="190" dur="3.4s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="24" cy="27" r="6" fill="#69ffd2">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite"/>
+  </circle>
+  <text x="42" y="24" fill="#f8fafc" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">X</text>
+  <text x="42" y="40" fill="#9fb8b1" font-family="Consolas, Menlo, monospace" font-size="12">@Ex0_Byte</text>
+</svg>

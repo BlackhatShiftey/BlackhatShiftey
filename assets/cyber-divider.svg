@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="44" viewBox="0 0 1000 44" role="img" aria-labelledby="title desc">
+  <title id="title">Animated cyber divider</title>
+  <desc id="desc">A dark cyan divider line with a moving signal pulse.</desc>
+  <defs>
+    <linearGradient id="line" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.2" stop-color="#22d3ee" stop-opacity="0.75"/>
+      <stop offset="0.5" stop-color="#34d399" stop-opacity="1"/>
+      <stop offset="0.8" stop-color="#22d3ee" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#69ffd2" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#69ffd2" stop-opacity="1"/>
+      <stop offset="1" stop-color="#69ffd2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="44" fill="#05070a" opacity="0"/>
+  <path d="M18 22H382L405 10H595L618 22H982" fill="none" stroke="url(#line)" stroke-width="2"/>
+  <rect x="-100" y="20" width="100" height="4" rx="2" fill="url(#pulse)">
+    <animate attributeName="x" from="-120" to="1020" dur="3.2s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="500" cy="22" r="4" fill="#34d399">
+    <animate attributeName="opacity" values="0.35;1;0.35" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+</svg>
