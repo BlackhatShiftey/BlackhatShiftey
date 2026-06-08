@@ -1,32 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="220" height="58" viewBox="0 0 220 58" role="img" aria-labelledby="title desc">
   <title id="title">Patreon link button</title>
-  <desc id="desc">Animated Patreon button with the Patreon logo path and brand color.</desc>
+  <desc id="desc">Reflective glass link button for Ex0_Byte on Patreon.</desc>
   <defs>
-    <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#ff674d" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ff674d" stop-opacity="0.16"/>
-      <stop offset="1" stop-color="#ff674d" stop-opacity="0"/>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#17212a" stop-opacity="0.96"/>
+      <stop offset="0.52" stop-color="#080c12" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#030509" stop-opacity="1"/>
     </linearGradient>
-    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
-      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+    <linearGradient id="edge" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff674d" stop-opacity="0.42"/>
+      <stop offset="0.44" stop-color="#ffffff" stop-opacity="0.76"/>
+      <stop offset="0.74" stop-color="#ff674d" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#052d49" stop-opacity="0.54"/>
+    </linearGradient>
+    <linearGradient id="glint" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.48" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="0.54" stop-color="#b6f7ff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.7" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  <rect width="220" height="58" rx="12" fill="#130806"/>
-  <rect x="1.5" y="1.5" width="217" height="55" rx="11" fill="none" stroke="#3b1610" stroke-width="1"/>
-  <rect x="2" y="2" width="216" height="54" rx="10" fill="none" stroke="#ff674d" stroke-width="2" stroke-dasharray="11 17" filter="url(#glow)">
-    <animate attributeName="stroke-dashoffset" from="0" to="-168" dur="10.5s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="2" y="2" width="216" height="54" rx="10" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="11 17" stroke-dashoffset="10" filter="url(#glow)">
-    <animate attributeName="stroke-dashoffset" from="10" to="-158" dur="10.5s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="-76" y="0" width="76" height="58" fill="url(#shine)">
-    <animate attributeName="x" from="-96" to="240" dur="14s" repeatCount="indefinite"/>
-  </rect>
-  <circle cx="31" cy="29" r="19" fill="#ff674d" opacity="0.12"/>
-  <g transform="translate(19 17) scale(1.0)" fill="#ff674d" filter="url(#glow)">
+  <clipPath id="clip"><rect x="1" y="1" width="218" height="56" rx="12"/></clipPath>
+  <rect width="220" height="58" rx="13" fill="#130907"/>
+  <rect x="1" y="1" width="218" height="56" rx="12" fill="url(#glass)" opacity="0.72"/>
+  <rect x="2" y="2" width="216" height="54" rx="11" fill="none" stroke="url(#edge)" stroke-width="1.7"/>
+  <rect x="9" y="9" width="40" height="40" rx="10" fill="#ffffff" fill-opacity="0.065" stroke="#ffffff" stroke-opacity="0.1"/>
+  <g clip-path="url(#clip)">
+    <rect x="-150" y="0" width="105" height="58" fill="url(#glint)" opacity="0.55" transform="skewX(-19)">
+      <animate attributeName="x" values="-170;-170;270;270" keyTimes="0;0.78;0.9;1" dur="26s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <g transform="translate(18 17) scale(1.0)" fill="#ff674d" filter="url(#softGlow)">
     <path d="M22.957 7.21c-.004-3.064-2.391-5.576-5.191-6.482-3.478-1.125-8.064-.962-11.384.604C2.357 3.231 1.093 7.391 1.046 11.54c-.039 3.411.302 12.396 5.369 12.46 3.765.047 4.326-4.804 6.068-7.141 1.24-1.662 2.836-2.132 4.801-2.618 3.376-.836 5.678-3.501 5.673-7.031Z"/>
   </g>
   <text x="62" y="25" fill="#ffffff" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">Patreon</text>
-  <text x="62" y="42" fill="#ffb4a5" font-family="Consolas, Menlo, monospace" font-size="12">Ex0_Byte</text>
+  <text x="62" y="42" fill="#aeb9c4" font-family="Consolas, Menlo, monospace" font-size="12">Ex0_Byte</text>
 </svg>

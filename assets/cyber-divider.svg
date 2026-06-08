@@ -1,26 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="44" viewBox="0 0 1000 44" role="img" aria-labelledby="title desc">
-  <title id="title">Animated cyber divider</title>
-  <desc id="desc">A dark cyan divider line with a moving signal pulse.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="56" viewBox="0 0 1000 56" role="img" aria-labelledby="title desc">
+  <title id="title">Reflective cyber divider</title>
+  <desc id="desc">Thin prismatic glass divider.</desc>
   <defs>
-    <linearGradient id="line" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
-      <stop offset="0.2" stop-color="#22d3ee" stop-opacity="0.75"/>
-      <stop offset="0.5" stop-color="#34d399" stop-opacity="1"/>
-      <stop offset="0.8" stop-color="#22d3ee" stop-opacity="0.75"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#17212a" stop-opacity="0.96"/>
+      <stop offset="0.52" stop-color="#080c12" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#030509" stop-opacity="1"/>
     </linearGradient>
-    <linearGradient id="pulse" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#69ffd2" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#69ffd2" stop-opacity="1"/>
-      <stop offset="1" stop-color="#69ffd2" stop-opacity="0"/>
+    <linearGradient id="edge" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#46f4ff" stop-opacity="0.35"/>
+      <stop offset="0.34" stop-color="#f4f1ff" stop-opacity="0.86"/>
+      <stop offset="0.68" stop-color="#c86bff" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#34f5c5" stop-opacity="0.45"/>
     </linearGradient>
+    <linearGradient id="glint" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.48" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="0.54" stop-color="#b6f7ff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <rect width="1000" height="44" fill="#05070a" opacity="0"/>
-  <path d="M18 22H382L405 10H595L618 22H982" fill="none" stroke="url(#line)" stroke-width="2"/>
-  <rect x="-100" y="20" width="100" height="4" rx="2" fill="url(#pulse)">
-    <animate attributeName="x" from="-120" to="1020" dur="3.2s" repeatCount="indefinite"/>
-  </rect>
-  <circle cx="500" cy="22" r="4" fill="#34d399">
-    <animate attributeName="opacity" values="0.35;1;0.35" dur="1.6s" repeatCount="indefinite"/>
-  </circle>
+  <clipPath id="lineClip"><rect x="36" y="20" width="928" height="16" rx="8"/></clipPath>
+  <rect width="1000" height="56" fill="none"/>
+  <rect x="36" y="26" width="928" height="2" rx="1" fill="#ffffff" opacity="0.08"/>
+  <rect x="36" y="24" width="928" height="6" rx="3" fill="url(#edge)" opacity="0.46"/>
+  <g clip-path="url(#lineClip)">
+    <rect x="-220" y="18" width="170" height="20" fill="url(#glint)" transform="skewX(-22)">
+      <animate attributeName="x" values="-240;-240;1040;1040" keyTimes="0;0.78;0.88;1" dur="24s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <rect x="42" y="22" width="18" height="10" rx="2" fill="#46f4ff" opacity="0.42"/>
+  <rect x="940" y="22" width="18" height="10" rx="2" fill="#c86bff" opacity="0.42"/>
 </svg>
