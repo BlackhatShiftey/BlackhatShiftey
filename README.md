@@ -29,12 +29,9 @@ I build AI-assisted systems, automation workflows, and security-minded developer
 
 ## Operator Dashboard
 
-| Signal | Focus |
-| --- | --- |
-| AI systems | Agent workflows, model-assisted tooling, MCP-style integrations, local-first automation |
-| Python automation | Scripts, CLIs, data pipelines, workflow orchestration, repeatable operations |
-| Security automation | Recon helpers, validation workflows, hardening checks, practical defensive tooling |
-| Full-stack builds | React, Node, APIs, dashboards, docs, deployment surfaces |
+<div align="center">
+  <img src="./assets/operator-dashboard.svg" alt="Operator Dashboard: AI systems, Python automation, Security automation, and Full-stack builds" width="100%">
+</div>
 
 ## Current Focus
 
@@ -51,17 +48,7 @@ I build AI-assisted systems, automation workflows, and security-minded developer
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-111827?style=for-the-badge&logo=python&logoColor=60a5fa)
-![Bash](https://img.shields.io/badge/Bash-111827?style=for-the-badge&logo=gnubash&logoColor=34d399)
-![JavaScript](https://img.shields.io/badge/JavaScript-111827?style=for-the-badge&logo=javascript&logoColor=facc15)
-![TypeScript](https://img.shields.io/badge/TypeScript-111827?style=for-the-badge&logo=typescript&logoColor=38bdf8)
-![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61dafb)
-![Node.js](https://img.shields.io/badge/Node.js-111827?style=for-the-badge&logo=nodedotjs&logoColor=22c55e)
-![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=38bdf8)
-![Linux](https://img.shields.io/badge/Linux-111827?style=for-the-badge&logo=linux&logoColor=f8fafc)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=60a5fa)
-![Security](https://img.shields.io/badge/Security_Automation-111827?style=for-the-badge&logo=kalilinux&logoColor=22d3ee)
-![AI Agents](https://img.shields.io/badge/AI_Agents-111827?style=for-the-badge&logo=probot&logoColor=f8fafc)
+<img src="./assets/stack-neon.svg" alt="Core Stack: Python, Bash, JavaScript, TypeScript, React, Node, Docker, Linux, GitHub Actions, Security Automation, and AI Agents" width="100%">
 
 </div>
 

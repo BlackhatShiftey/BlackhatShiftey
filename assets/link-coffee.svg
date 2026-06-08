@@ -1,14 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="230" height="54" viewBox="0 0 230 54" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="58" viewBox="0 0 240 58" role="img" aria-labelledby="title desc">
   <title id="title">Buy Me a Coffee link button</title>
-  <desc id="desc">Animated support button for Buy Me a Coffee.</desc>
-  <rect width="230" height="54" rx="10" fill="#05070a"/>
-  <rect x="1" y="1" width="228" height="52" rx="9" fill="none" stroke="#facc15" stroke-opacity="0.75"/>
-  <rect x="-60" y="0" width="60" height="54" fill="#facc15" opacity="0.16">
-    <animate attributeName="x" from="-70" to="240" dur="4s" repeatCount="indefinite"/>
+  <desc id="desc">Animated Buy Me a Coffee button with cup icon and yellow brand color.</desc>
+  <defs>
+    <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ffdd00" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffdd00" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#ffdd00" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="240" height="58" rx="12" fill="#151100"/>
+  <rect x="1" y="1" width="238" height="56" rx="11" fill="none" stroke="#ffdd00" stroke-opacity="0.9"/>
+  <rect x="-80" y="0" width="80" height="58" fill="url(#shine)">
+    <animate attributeName="x" from="-90" to="252" dur="4s" repeatCount="indefinite"/>
   </rect>
-  <circle cx="24" cy="27" r="6" fill="#facc15">
-    <animate attributeName="opacity" values="0.35;1;0.35" dur="2s" repeatCount="indefinite"/>
-  </circle>
-  <text x="42" y="24" fill="#f8fafc" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">BUY ME A COFFEE</text>
-  <text x="42" y="40" fill="#9fb8b1" font-family="Consolas, Menlo, monospace" font-size="12">ex0_byte</text>
+  <g transform="translate(16 12)" filter="url(#glow)">
+    <path d="M5 11h29l-3 23H8z" fill="#ffdd00"/>
+    <path d="M32 15h7c7 0 6 13-1 13h-6" fill="none" stroke="#ffdd00" stroke-width="5"/>
+    <path d="M10 6h18" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <path d="M12 18h15" stroke="#111111" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+    <animateTransform attributeName="transform" type="translate" values="16 12;16 10;16 12" dur="2.4s" repeatCount="indefinite"/>
+  </g>
+  <text x="66" y="25" fill="#ffffff" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">Buy Me a Coffee</text>
+  <text x="66" y="42" fill="#ffe875" font-family="Consolas, Menlo, monospace" font-size="12">ex0_byte</text>
 </svg>

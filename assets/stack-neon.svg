@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="320" viewBox="0 0 1000 320" role="img" aria-labelledby="title desc">
+  <title id="title">Neon Core Stack</title>
+  <desc id="desc">Animated neon grid of Python, Bash, JavaScript, TypeScript, React, Node.js, Docker, Linux, GitHub Actions, Security Automation, and AI Agents.</desc>
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="edge" x1="0" x2="1">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset="0.5" stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="320" rx="20" fill="#05070a"/>
+  <rect x="2" y="2" width="996" height="316" rx="18" fill="none" stroke="url(#edge)" stroke-opacity="0.7" stroke-width="2"/>
+  <text x="42" y="48" fill="#69ffd2" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="700">CORE STACK // NEON LOADOUT</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">
+    <g transform="translate(42 78)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#60a5fa"/><text x="18" y="34" fill="#60a5fa" filter="url(#glow)">Py</text><text x="58" y="34" fill="#f8fafc">Python</text></g>
+    <g transform="translate(210 78)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#34d399"/><text x="18" y="34" fill="#34d399" filter="url(#glow)">$</text><text x="58" y="34" fill="#f8fafc">Bash</text></g>
+    <g transform="translate(378 78)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#facc15"/><text x="18" y="34" fill="#facc15" filter="url(#glow)">JS</text><text x="58" y="34" fill="#f8fafc">JavaScript</text></g>
+    <g transform="translate(546 78)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#38bdf8"/><text x="18" y="34" fill="#38bdf8" filter="url(#glow)">TS</text><text x="58" y="34" fill="#f8fafc">TypeScript</text></g>
+    <g transform="translate(714 78)"><rect width="244" height="54" rx="10" fill="#08100e" stroke="#61dafb"/><ellipse cx="32" cy="27" rx="20" ry="7" fill="none" stroke="#61dafb" filter="url(#glow)"/><ellipse cx="32" cy="27" rx="20" ry="7" fill="none" stroke="#61dafb" transform="rotate(60 32 27)" filter="url(#glow)"/><ellipse cx="32" cy="27" rx="20" ry="7" fill="none" stroke="#61dafb" transform="rotate(120 32 27)" filter="url(#glow)"/><circle cx="32" cy="27" r="3" fill="#61dafb"/><text x="72" y="34" fill="#f8fafc">React</text></g>
+    <g transform="translate(42 150)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#22c55e"/><path d="M19 18h26l13 9-13 9H19L6 27z" fill="none" stroke="#22c55e" filter="url(#glow)"/><text x="68" y="34" fill="#f8fafc">Node</text></g>
+    <g transform="translate(210 150)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#38bdf8"/><rect x="16" y="18" width="10" height="8" fill="#38bdf8"/><rect x="28" y="18" width="10" height="8" fill="#38bdf8"/><rect x="40" y="18" width="10" height="8" fill="#38bdf8"/><rect x="28" y="28" width="10" height="8" fill="#38bdf8"/><text x="64" y="34" fill="#f8fafc">Docker</text></g>
+    <g transform="translate(378 150)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#f8fafc"/><text x="18" y="34" fill="#f8fafc" filter="url(#glow)">LX</text><text x="58" y="34" fill="#f8fafc">Linux</text></g>
+    <g transform="translate(546 150)"><rect width="190" height="54" rx="10" fill="#08100e" stroke="#60a5fa"/><circle cx="22" cy="18" r="5" fill="#60a5fa"/><circle cx="42" cy="28" r="5" fill="#60a5fa"/><circle cx="22" cy="38" r="5" fill="#60a5fa"/><path d="M26 20l12 6M38 30l-12 6" stroke="#60a5fa" filter="url(#glow)"/><text x="68" y="34" fill="#f8fafc">Actions</text></g>
+    <g transform="translate(754 150)"><rect width="204" height="54" rx="10" fill="#08100e" stroke="#22d3ee"/><path d="M18 16h26v10c0 14-13 20-13 20S18 40 18 26z" fill="none" stroke="#22d3ee" filter="url(#glow)"/><text x="64" y="34" fill="#f8fafc">Security</text></g>
+    <g transform="translate(42 222)"><rect width="916" height="54" rx="10" fill="#08100e" stroke="#a78bfa"/><rect x="22" y="16" width="30" height="24" rx="6" fill="none" stroke="#a78bfa" filter="url(#glow)"/><circle cx="31" cy="28" r="2" fill="#a78bfa"/><circle cx="43" cy="28" r="2" fill="#a78bfa"/><path d="M37 8v8M37 40v6" stroke="#a78bfa"/><text x="78" y="34" fill="#f8fafc">AI Agents / automation workflows / local-first tooling</text></g>
+  </g>
+  <path d="M42 298H958" stroke="url(#edge)" stroke-width="2" stroke-opacity="0.5">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="2.6s" repeatCount="indefinite"/>
+  </path>
+</svg>

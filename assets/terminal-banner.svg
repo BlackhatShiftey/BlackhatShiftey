@@ -45,11 +45,11 @@
 
   <g font-family="Consolas, Menlo, monospace">
     <text x="64" y="112" fill="#69ffd2" font-size="20">$ ./profile --signal</text>
-    <text x="64" y="164" fill="#ffffff" font-size="50" font-weight="700" filter="url(#glow)">BlackhatShiftey</text>
-    <text x="66" y="203" fill="#9fb8b1" font-size="24">AI Architect | Python | Security Automation</text>
-    <rect x="648" y="184" width="14" height="26" fill="#69ffd2">
+    <rect x="314" y="94" width="12" height="22" fill="#69ffd2">
       <animate attributeName="opacity" values="0;1;1;0" dur="1.1s" repeatCount="indefinite"/>
     </rect>
+    <text x="64" y="164" fill="#ffffff" font-size="50" font-weight="700" filter="url(#glow)">BlackhatShiftey</text>
+    <text x="66" y="203" fill="#9fb8b1" font-size="24">AI Architect | Python | Security Automation</text>
   </g>
 
   <g transform="translate(760 104)" font-family="Consolas, Menlo, monospace">
