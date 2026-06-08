@@ -16,9 +16,9 @@
     </linearGradient>
     <linearGradient id="glint" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.48" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.38"/>
-      <stop offset="0.54" stop-color="#b6f7ff" stop-opacity="0.16"/>
+      <stop offset="0.34" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="0.66" stop-color="#b6f7ff" stop-opacity="0.09"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -41,9 +41,9 @@
   <rect x="2" y="2" width="996" height="316" rx="22" fill="none" stroke="url(#edge)" stroke-width="2"/>
   <rect x="11" y="11" width="978" height="298" rx="17" fill="none" stroke="#ffffff" stroke-opacity="0.055"/>
   <g clip-path="url(#clip)">
-    <rect x="-250" y="0" width="190" height="320" fill="url(#glint)" opacity="0.5" transform="skewX(-18)">
-      <animate attributeName="x" values="-280;-280;1110;1110" keyTimes="0;0.82;0.92;1" dur="32s" repeatCount="indefinite"/>
-    </rect>
+    <path d="M70 18H940L790 76H28Z" fill="url(#glint)" opacity="0.18"/>
+    <path d="M705 0H1000V36H645Z" fill="#ffffff" opacity="0.03"/>
+    <path d="M0 274H380L304 320H0Z" fill="#34f5c5" opacity="0.026"/>
   </g>
   <text x="42" y="48" fill="#69ffd2" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="700">CORE STACK // REFLECTIVE LOADOUT</text>
   <g font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">
@@ -61,4 +61,3 @@
   </g>
   <path d="M42 298H958" stroke="url(#edge)" stroke-width="2" stroke-opacity="0.46"/>
 </svg>
-
