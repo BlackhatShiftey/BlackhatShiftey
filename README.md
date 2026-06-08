@@ -21,8 +21,7 @@ mission       Build practical systems that make complex work faster, cleaner, an
 status        Designing, testing, and shipping useful tools.
 ```
 
-I build AI-assisted systems, automation workflows, and security-minded developer tools. My lane is where Python, agents, infrastructure, and defensive automation overlap.
-
+I build AI agentic systems, automation workflows, and security-minded developer tools. My language is Python, agents, infrastructure, and defensive automation overlap. Future DevOp 
 <div align="center">
   <img src="./assets/cyber-divider.svg?v=d7ae7f3" alt="" width="100%">
 </div>
@@ -36,9 +35,9 @@ I build AI-assisted systems, automation workflows, and security-minded developer
 ## Current Focus
 
 - Building cleaner AI workflows that help with real engineering work.
-- Automating repetitive security and development tasks with Python.
+- Agentic Automation ; Complex agents 
 - Turning rough ideas into tools, dashboards, and repo-ready projects.
-- Keeping the signal high: useful systems, working links, readable docs.
+- Updating useful systems, maintaining working links, readable docs.
 
 <div align="center">
   <img src="./assets/cyber-divider.svg?v=d7ae7f3" alt="" width="100%">
@@ -56,11 +55,12 @@ I build AI-assisted systems, automation workflows, and security-minded developer
 
 ```text
 idea
-  -> threat model the weak points
-  -> automate the boring path
-  -> ship a small working version
-  -> test what breaks
-  -> document the useful parts
+  -> Plan , Formulate a Roadmap.md 
+  -> Automate the Protocols + implement an improvement loop 
+  -> Build 
+  -> Break 
+  -> Patch + Document everythig
+  -> while True: build(); break_it(); fix(); benchmark(); improve()
 ```
 
 <div align="center">
@@ -82,14 +82,7 @@ idea
 
 ## Support The Work
 
-If something here helps you build, automate, or learn, support keeps the lab running.
-
-<div align="center">
-
-<a href="https://ko-fi.com/terrabyte1000"><img src="./assets/link-kofi.svg?v=d7ae7f3" alt="Support on Ko-fi" height="54"></a>
-<a href="https://www.patreon.com/cw/Ex0_Byte"><img src="./assets/link-patreon.svg?v=d7ae7f3" alt="Support on Patreon" height="54"></a>
-<a href="https://buymeacoffee.com/ex0_byte"><img src="./assets/link-coffee.svg?v=d7ae7f3" alt="Buy me a coffee" height="54"></a>
-
+If something here helps you build, automate, or learn, Your Support Means the World, So Dropping Stars Really Help me get funding.
 </div>
 
 ## Contact
