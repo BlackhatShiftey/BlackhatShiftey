@@ -4,22 +4,30 @@
   <defs>
     <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.14"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
   <rect width="190" height="58" rx="12" fill="#000000"/>
-  <rect x="1" y="1" width="188" height="56" rx="11" fill="none" stroke="#f8fafc" stroke-opacity="0.65"/>
-  <rect x="-70" y="0" width="70" height="58" fill="url(#shine)">
-    <animate attributeName="x" from="-80" to="200" dur="3.2s" repeatCount="indefinite"/>
+  <rect x="1.5" y="1.5" width="187" height="55" rx="11" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="2" y="2" width="186" height="54" rx="10" fill="none" stroke="#ff004c" stroke-width="2" stroke-dasharray="10 16" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-156" dur="9s" repeatCount="indefinite"/>
   </rect>
-  <g transform="translate(18 14)" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" filter="url(#glow)">
-    <path d="M2 2L28 30"/>
-    <path d="M28 2L2 30"/>
+  <rect x="2" y="2" width="186" height="54" rx="10" fill="none" stroke="#00ffd1" stroke-width="2" stroke-dasharray="10 16" stroke-dashoffset="9" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="9" to="-147" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="2" y="2" width="186" height="54" rx="10" fill="none" stroke="#2d7dff" stroke-width="2" stroke-dasharray="10 16" stroke-dashoffset="18" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="18" to="-138" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="-70" y="0" width="70" height="58" fill="url(#shine)">
+    <animate attributeName="x" from="-90" to="210" dur="12s" repeatCount="indefinite"/>
+  </rect>
+  <g transform="translate(18 17) scale(1.05)" fill="#ffffff" filter="url(#glow)">
+    <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/>
   </g>
   <text x="62" y="25" fill="#ffffff" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">X / Twitter</text>
   <text x="62" y="42" fill="#a3a3a3" font-family="Consolas, Menlo, monospace" font-size="12">@Ex0_Byte</text>

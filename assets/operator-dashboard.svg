@@ -18,9 +18,18 @@
     </filter>
   </defs>
   <rect width="1000" height="310" rx="20" fill="#05070a"/>
-  <rect x="2" y="2" width="996" height="306" rx="18" fill="none" stroke="url(#stroke)" stroke-opacity="0.72" stroke-width="2"/>
+  <rect x="2" y="2" width="996" height="306" rx="18" fill="none" stroke="#1f8f75" stroke-opacity="0.35" stroke-width="1"/>
+  <rect x="3" y="3" width="994" height="304" rx="17" fill="none" stroke="#ff004c" stroke-width="2" stroke-dasharray="14 22" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-216" dur="13s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="3" y="3" width="994" height="304" rx="17" fill="none" stroke="#00ffd1" stroke-width="2" stroke-dasharray="14 22" stroke-dashoffset="12" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="12" to="-204" dur="13s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="3" y="3" width="994" height="304" rx="17" fill="none" stroke="#2d7dff" stroke-width="2" stroke-dasharray="14 22" stroke-dashoffset="24" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="24" to="-192" dur="13s" repeatCount="indefinite"/>
+  </rect>
   <rect x="-180" y="0" width="180" height="310" fill="url(#sweep)">
-    <animate attributeName="x" from="-200" to="1020" dur="5.2s" repeatCount="indefinite"/>
+    <animate attributeName="x" from="-220" to="1040" dur="14s" repeatCount="indefinite"/>
   </rect>
   <text x="42" y="48" fill="#69ffd2" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="700">OPERATOR DASHBOARD</text>
   <text x="42" y="74" fill="#9fb8b1" font-family="Consolas, Menlo, monospace" font-size="13">signal map // live focus lanes</text>

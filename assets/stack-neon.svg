@@ -11,7 +11,16 @@
     </linearGradient>
   </defs>
   <rect width="1000" height="320" rx="20" fill="#05070a"/>
-  <rect x="2" y="2" width="996" height="316" rx="18" fill="none" stroke="url(#edge)" stroke-opacity="0.7" stroke-width="2"/>
+  <rect x="2" y="2" width="996" height="316" rx="18" fill="none" stroke="#1f8f75" stroke-opacity="0.35" stroke-width="1"/>
+  <rect x="3" y="3" width="994" height="314" rx="17" fill="none" stroke="#ff004c" stroke-width="2" stroke-dasharray="14 22" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-216" dur="13.5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="3" y="3" width="994" height="314" rx="17" fill="none" stroke="#00ffd1" stroke-width="2" stroke-dasharray="14 22" stroke-dashoffset="12" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="12" to="-204" dur="13.5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="3" y="3" width="994" height="314" rx="17" fill="none" stroke="#2d7dff" stroke-width="2" stroke-dasharray="14 22" stroke-dashoffset="24" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="24" to="-192" dur="13.5s" repeatCount="indefinite"/>
+  </rect>
   <text x="42" y="48" fill="#69ffd2" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="700">CORE STACK // NEON LOADOUT</text>
   <g font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">
     <g transform="translate(42 78)"><rect width="150" height="54" rx="10" fill="#08100e" stroke="#60a5fa"/><text x="18" y="34" fill="#60a5fa" filter="url(#glow)">Py</text><text x="58" y="34" fill="#f8fafc">Python</text></g>

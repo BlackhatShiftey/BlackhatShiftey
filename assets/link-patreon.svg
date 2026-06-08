@@ -1,26 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="220" height="58" viewBox="0 0 220 58" role="img" aria-labelledby="title desc">
   <title id="title">Patreon link button</title>
-  <desc id="desc">Animated Patreon button with Patreon mark and brand color.</desc>
+  <desc id="desc">Animated Patreon button with the Patreon logo path and brand color.</desc>
   <defs>
     <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0" stop-color="#ff674d" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ff674d" stop-opacity="0.3"/>
+      <stop offset="0.5" stop-color="#ff674d" stop-opacity="0.16"/>
       <stop offset="1" stop-color="#ff674d" stop-opacity="0"/>
     </linearGradient>
     <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
-      <feGaussianBlur stdDeviation="2.6" result="blur"/>
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
   <rect width="220" height="58" rx="12" fill="#130806"/>
-  <rect x="1" y="1" width="218" height="56" rx="11" fill="none" stroke="#ff674d" stroke-opacity="0.85"/>
-  <rect x="-76" y="0" width="76" height="58" fill="url(#shine)">
-    <animate attributeName="x" from="-86" to="232" dur="3.8s" repeatCount="indefinite"/>
+  <rect x="1.5" y="1.5" width="217" height="55" rx="11" fill="none" stroke="#3b1610" stroke-width="1"/>
+  <rect x="2" y="2" width="216" height="54" rx="10" fill="none" stroke="#ff674d" stroke-width="2" stroke-dasharray="11 17" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-168" dur="10.5s" repeatCount="indefinite"/>
   </rect>
-  <g transform="translate(17 13)" filter="url(#glow)">
-    <rect x="0" y="2" width="8" height="33" rx="4" fill="#ff674d"/>
-    <circle cx="25" cy="13" r="13" fill="#ff674d"/>
-    <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="2.2s" repeatCount="indefinite" additive="sum"/>
+  <rect x="2" y="2" width="216" height="54" rx="10" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="11 17" stroke-dashoffset="10" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="10" to="-158" dur="10.5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="-76" y="0" width="76" height="58" fill="url(#shine)">
+    <animate attributeName="x" from="-96" to="240" dur="14s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="31" cy="29" r="19" fill="#ff674d" opacity="0.12"/>
+  <g transform="translate(19 17) scale(1.0)" fill="#ff674d" filter="url(#glow)">
+    <path d="M22.957 7.21c-.004-3.064-2.391-5.576-5.191-6.482-3.478-1.125-8.064-.962-11.384.604C2.357 3.231 1.093 7.391 1.046 11.54c-.039 3.411.302 12.396 5.369 12.46 3.765.047 4.326-4.804 6.068-7.141 1.24-1.662 2.836-2.132 4.801-2.618 3.376-.836 5.678-3.501 5.673-7.031Z"/>
   </g>
   <text x="62" y="25" fill="#ffffff" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="700">Patreon</text>
   <text x="62" y="42" fill="#ffb4a5" font-family="Consolas, Menlo, monospace" font-size="12">Ex0_Byte</text>
