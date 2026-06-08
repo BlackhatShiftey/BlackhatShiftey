@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/terminal-banner.svg?v=d7ae7f3" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
+<img src="./assets/terminal-banner.gif?v=ops-cycle-1" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
 
 <br>
 
