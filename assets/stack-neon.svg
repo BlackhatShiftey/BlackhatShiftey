@@ -25,6 +25,10 @@
       <feGaussianBlur stdDeviation="1.7" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <filter id="edgeFlowGlow" x="-8%" y="-22%" width="116%" height="144%">
+      <feGaussianBlur stdDeviation="4.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
   <linearGradient id="chip" x1="0" x2="0" y1="0" y2="1">
     <stop offset="0" stop-color="#111b24" stop-opacity="0.95"/>
@@ -39,6 +43,12 @@
   <rect x="1" y="1" width="998" height="318" rx="22" fill="url(#glass)"/>
   <rect x="1" y="1" width="998" height="318" rx="22" fill="url(#grid)"/>
   <rect x="2" y="2" width="996" height="316" rx="22" fill="none" stroke="url(#edge)" stroke-width="2"/>
+  <rect x="2" y="2" width="996" height="316" rx="22" fill="none" stroke="url(#edge)" stroke-width="5" stroke-linecap="round" stroke-dasharray="155 845" pathLength="1000" opacity="0.28" filter="url(#edgeFlowGlow)">
+    <animate attributeName="stroke-dashoffset" values="0;-1000" dur="34s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="2" y="2" width="996" height="316" rx="22" fill="none" stroke="url(#edge)" stroke-width="2" stroke-linecap="round" stroke-dasharray="92 908" pathLength="1000" opacity="0.62">
+    <animate attributeName="stroke-dashoffset" values="0;-1000" dur="34s" repeatCount="indefinite"/>
+  </rect>
   <rect x="11" y="11" width="978" height="298" rx="17" fill="none" stroke="#ffffff" stroke-opacity="0.055"/>
   <g clip-path="url(#clip)">
     <path d="M70 18H940L790 76H28Z" fill="url(#glint)" opacity="0.18"/>

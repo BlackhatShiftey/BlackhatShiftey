@@ -21,6 +21,7 @@ OPS_WORDS = [
 FRAMES_PER_WORD = 4
 CURSOR_PERIOD = 5
 CURSOR_ON_FRAMES = {0, 1}
+EDGE_FLOW_COLORS = ["#46f4ff", "#f4f1ff", "#c86bff", "#34f5c5"]
 
 
 def font(size, bold=False):
@@ -75,6 +76,61 @@ def add_glow(base, draw_fn, blur=7):
     base.alpha_composite(layer.filter(ImageFilter.GaussianBlur(blur)))
 
 
+def edge_color(index):
+    colors = [hex_rgb(color) for color in EDGE_FLOW_COLORS]
+    return colors[index % len(colors)]
+
+
+def rounded_border_points(x0, y0, x1, y1, radius, step=10):
+    points = []
+
+    for x in range(x0 + radius, x1 - radius + 1, step):
+        points.append((x, y0))
+
+    for degree in range(270, 361, 8):
+        angle = math.radians(degree)
+        points.append((x1 - radius + int(math.cos(angle) * radius), y0 + radius + int(math.sin(angle) * radius)))
+
+    for y in range(y0 + radius, y1 - radius + 1, step):
+        points.append((x1, y))
+
+    for degree in range(0, 91, 8):
+        angle = math.radians(degree)
+        points.append((x1 - radius + int(math.cos(angle) * radius), y1 - radius + int(math.sin(angle) * radius)))
+
+    for x in range(x1 - radius, x0 + radius - 1, -step):
+        points.append((x, y1))
+
+    for degree in range(90, 181, 8):
+        angle = math.radians(degree)
+        points.append((x0 + radius + int(math.cos(angle) * radius), y1 - radius + int(math.sin(angle) * radius)))
+
+    for y in range(y1 - radius, y0 + radius - 1, -step):
+        points.append((x0, y))
+
+    for degree in range(180, 271, 8):
+        angle = math.radians(degree)
+        points.append((x0 + radius + int(math.cos(angle) * radius), y0 + radius + int(math.sin(angle) * radius)))
+
+    return points
+
+
+def draw_flowing_border(img, frame_index):
+    points = rounded_border_points(2, 2, 997, 257, 22)
+    segment_count = 30
+    start = (frame_index * 7) % len(points)
+    flow = [points[(start + offset) % len(points)] for offset in range(segment_count)]
+
+    def draw_segment(draw, width, alpha):
+        for i in range(len(flow) - 1):
+            base = edge_color(i // 8)
+            color = (*base, alpha)
+            draw.line((*flow[i], *flow[i + 1]), fill=color, width=width)
+
+    add_glow(img, lambda d: draw_segment(d, 7, 78), blur=4)
+    draw_segment(ImageDraw.Draw(img), 3, 190)
+
+
 def draw_text_glow(img, pos, text, text_font, fill, glow_fill, blur=2):
     add_glow(img, lambda d: d.text(pos, text, font=text_font, fill=glow_fill), blur)
     ImageDraw.Draw(img).text(pos, text, font=text_font, fill=fill)
@@ -100,7 +156,7 @@ def draw_frame(frame_index, word, color):
     for y in range(1, HEIGHT, 48):
         draw.line((1, y, WIDTH - 2, y), fill=(18, 63, 77, 255))
 
-    draw.rounded_rectangle((2, 2, 997, 257), radius=22, outline=(244, 241, 255, 170), width=2)
+    draw.rounded_rectangle((2, 2, 997, 257), radius=22, outline=(244, 241, 255, 150), width=2)
     draw.rounded_rectangle((10, 10, 989, 249), radius=18, outline=(32, 40, 50, 255), width=1)
     draw.line((38, 73, 958, 73), fill=(32, 44, 52, 255), width=1)
     draw.line((38, 74, 958, 74), fill=(38, 135, 145, 255), width=1)
@@ -135,8 +191,6 @@ def draw_frame(frame_index, word, color):
     draw.text((66, 181), "AI Architect | Python | Security Automation", font=font(24), fill=(184, 199, 212, 255))
 
     panel = (760, 103, 930, 199)
-    glow = 54 + int(28 * (0.5 + 0.5 * math.sin(frame_index * math.pi / 2)))
-    add_glow(img, lambda d: d.rounded_rectangle(panel, radius=12, fill=(*hex_rgb(color), glow)), blur=7)
     draw = ImageDraw.Draw(img)
     draw.rounded_rectangle(panel, radius=12, fill=(4, 9, 15, 255), outline=hex_rgb(color), width=2)
     draw.rounded_rectangle((768, 111, 922, 191), radius=9, fill=(7, 14, 22, 255), outline=(31, 42, 51, 255), width=1)
@@ -155,6 +209,7 @@ def draw_frame(frame_index, word, color):
     draw.line((286, 216, 472, 216), fill=(200, 107, 255, 120), width=2)
     draw.line((472, 216, 490, 229), fill=(244, 241, 255, 120), width=2)
     draw.line((490, 229, 936, 229), fill=(52, 245, 197, 120), width=2)
+    draw_flowing_border(img, frame_index)
 
     return img.convert("RGB")
 

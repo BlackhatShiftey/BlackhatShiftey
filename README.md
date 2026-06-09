@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/terminal-banner.gif?v=ops-cycle-2" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
+<img src="./assets/terminal-banner.gif?v=border-flow-1" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
 
 <br>
 
@@ -29,7 +29,7 @@ I build AI agentic systems, automation workflows, and security-minded developer 
 ## Operator Dashboard
 
 <div align="center">
-  <img src="./assets/operator-dashboard.svg?v=d7ae7f3" alt="Operator Dashboard: AI systems, Python automation, Security automation, and Full-stack builds" width="100%">
+  <img src="./assets/operator-dashboard.svg?v=edge-flow-1" alt="Operator Dashboard: AI systems, Python automation, Security automation, and Full-stack builds" width="100%">
 </div>
 
 ## Current Focus
@@ -47,7 +47,7 @@ I build AI agentic systems, automation workflows, and security-minded developer 
 
 <div align="center">
 
-<img src="./assets/stack-neon.svg?v=d7ae7f3" alt="Core Stack: Python, Bash, JavaScript, TypeScript, React, Node, Docker, Linux, GitHub Actions, Security Automation, and AI Agents" width="100%">
+<img src="./assets/stack-neon.svg?v=edge-flow-1" alt="Core Stack: Python, Bash, JavaScript, TypeScript, React, Node, Docker, Linux, GitHub Actions, Security Automation, and AI Agents" width="100%">
 
 </div>
 
