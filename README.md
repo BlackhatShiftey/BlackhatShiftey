@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/terminal-banner.gif?v=border-flow-1" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
+<img src="./assets/terminal-banner.gif?v=border-flow-2" alt="BlackhatShiftey - AI Architect | Python | Security Automation" width="100%">
 
 <br>
 

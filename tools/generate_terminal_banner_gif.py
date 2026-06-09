@@ -18,7 +18,9 @@ OPS_WORDS = [
     ("IMPROVE", "#34f5c5"),
 ]
 
-FRAMES_PER_WORD = 4
+TOTAL_FRAMES = 100
+OPS_FRAMES_PER_WORD = 10
+FRAME_DURATION_MS = 110
 CURSOR_PERIOD = 5
 CURSOR_ON_FRAMES = {0, 1}
 EDGE_FLOW_COLORS = ["#46f4ff", "#f4f1ff", "#c86bff", "#34f5c5"]
@@ -76,9 +78,13 @@ def add_glow(base, draw_fn, blur=7):
     base.alpha_composite(layer.filter(ImageFilter.GaussianBlur(blur)))
 
 
-def edge_color(index):
+def edge_color_at(position):
     colors = [hex_rgb(color) for color in EDGE_FLOW_COLORS]
-    return colors[index % len(colors)]
+    scaled = (position % 1.0) * len(colors)
+    start = int(scaled)
+    end = (start + 1) % len(colors)
+    t = scaled - start
+    return tuple(lerp(colors[start][i], colors[end][i], t) for i in range(3))
 
 
 def rounded_border_points(x0, y0, x1, y1, radius, step=10):
@@ -117,14 +123,15 @@ def rounded_border_points(x0, y0, x1, y1, radius, step=10):
 
 def draw_flowing_border(img, frame_index):
     points = rounded_border_points(2, 2, 997, 257, 22)
-    segment_count = 30
-    start = (frame_index * 7) % len(points)
+    segment_count = 46
+    start = int((frame_index / TOTAL_FRAMES) * len(points)) % len(points)
     flow = [points[(start + offset) % len(points)] for offset in range(segment_count)]
 
     def draw_segment(draw, width, alpha):
         for i in range(len(flow) - 1):
-            base = edge_color(i // 8)
-            color = (*base, alpha)
+            base = edge_color_at((frame_index / TOTAL_FRAMES) + (i / max(1, len(flow) - 1)) * 0.42)
+            fade = 1.0 - abs((i / max(1, len(flow) - 1)) - 0.5) * 1.2
+            color = (*base, int(alpha * max(0.34, fade)))
             draw.line((*flow[i], *flow[i + 1]), fill=color, width=width)
 
     add_glow(img, lambda d: draw_segment(d, 7, 78), blur=4)
@@ -217,13 +224,11 @@ def draw_frame(frame_index, word, color):
 def main():
     frames = []
     durations = []
-    frame_index = 0
 
-    for word, color in OPS_WORDS:
-        for pulse in range(FRAMES_PER_WORD):
-            frames.append(draw_frame(frame_index, word, color))
-            durations.append(190 if pulse < FRAMES_PER_WORD - 1 else 520)
-            frame_index += 1
+    for frame_index in range(TOTAL_FRAMES):
+        word, color = OPS_WORDS[(frame_index // OPS_FRAMES_PER_WORD) % len(OPS_WORDS)]
+        frames.append(draw_frame(frame_index, word, color))
+        durations.append(FRAME_DURATION_MS)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     frames[0].save(OUT, save_all=True, append_images=frames[1:], duration=durations, loop=0)
