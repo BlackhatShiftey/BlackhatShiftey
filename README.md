@@ -83,6 +83,13 @@ idea
 ## Support The Work
 
 If something here helps you build, automate, or learn, Your Support Means the World, So Dropping Stars Really Help me get funding.
+
+<div align="center">
+
+<a href="https://ko-fi.com/terrabyte1000"><img src="./assets/link-kofi.svg?v=d7ae7f3" alt="Support on Ko-fi" height="54"></a>
+<a href="https://www.patreon.com/cw/Ex0_Byte"><img src="./assets/link-patreon.svg?v=d7ae7f3" alt="Support on Patreon" height="54"></a>
+<a href="https://buymeacoffee.com/ex0_byte"><img src="./assets/link-coffee.svg?v=d7ae7f3" alt="Buy me a coffee" height="54"></a>
+
 </div>
 
 ## Contact
