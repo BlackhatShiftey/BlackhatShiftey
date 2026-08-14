@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="470" height="305" viewBox="0 0 470 305" role="img" aria-labelledby="t d">
+<title id="t">Canticle operator card</title><desc id="d">Dark glass operator profile card for BlackhatShiftey.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17101d"/><stop offset="1" stop-color="#08080d"/></linearGradient>
+ <linearGradient id="edge"><stop stop-color="#ff83cc"/><stop offset=".5" stop-color="#9c78ff"/><stop offset="1" stop-color="#7ee8ff"/></linearGradient>
+</defs>
+<rect x="1" y="1" width="468" height="303" rx="22" fill="url(#bg)" stroke="url(#edge)" stroke-opacity=".62"/>
+<circle cx="431" cy="38" r="44" fill="#ff75c8" opacity=".06"/><circle cx="411" cy="62" r="8" fill="#ff9fd8" opacity=".3"/>
+<text x="28" y="42" fill="#ff9bd7" font-family="Arial,sans-serif" font-size="15" font-weight="700">ABOUT / OPERATOR</text>
+<text x="28" y="78" fill="#ffffff" font-family="Arial,sans-serif" font-size="24" font-weight="700">BlackhatShiftey</text>
+<text x="28" y="102" fill="#cbbfd2" font-family="Arial,sans-serif" font-size="13">AI Architect · Research Builder · Python-first</text>
+<text x="28" y="137" fill="#eee7f1" font-family="Arial,sans-serif" font-size="13">Memory-first systems, agentic workflows,</text>
+<text x="28" y="157" fill="#eee7f1" font-family="Arial,sans-serif" font-size="13">automation, research tooling, and dev UX.</text>
+<g font-family="Arial,sans-serif" font-size="11" fill="#f7eaf4">
+ <rect x="28" y="184" width="92" height="28" rx="14" fill="#2a1427" stroke="#ff7cc7" stroke-opacity=".6"/><text x="42" y="202">Boba Fuelled</text>
+ <rect x="128" y="184" width="92" height="28" rx="14" fill="#20182d" stroke="#9f7cff" stroke-opacity=".6"/><text x="143" y="202">Lab Minded</text>
+ <rect x="228" y="184" width="102" height="28" rx="14" fill="#2a1427" stroke="#ff7cc7" stroke-opacity=".6"/><text x="242" y="202">Ship Obsessed</text>
+ <rect x="338" y="184" width="86" height="28" rx="14" fill="#181f2b" stroke="#7ee8ff" stroke-opacity=".55"/><text x="354" y="202">Canticle</text>
+</g>
+<rect x="28" y="232" width="396" height="48" rx="14" fill="#120d16" stroke="#ff8fd1" stroke-opacity=".28"/>
+<text x="45" y="253" fill="#ffb6de" font-family="Georgia,serif" font-size="13">“Memory is infrastructure. Agents are interfaces.</text>
+<text x="45" y="271" fill="#d9cfe0" font-family="Georgia,serif" font-size="13">Build both beautifully.”</text>
+</svg>
