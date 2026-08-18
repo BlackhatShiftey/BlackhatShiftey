@@ -1,101 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="310" viewBox="0 0 1000 310" role="img" aria-labelledby="title desc">
-  <title id="title">Reflective Operator Dashboard</title>
-  <desc id="desc">Dark glass dashboard showing AI systems, Python automation, Security automation, and Full-stack builds.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="350" viewBox="0 0 1000 350" role="img" aria-labelledby="title desc">
+  <title id="title">Canticle research surface</title>
+  <desc id="desc">A Canticle-style instrument panel mapping research questions through AI safety, open source, emergence, and agent systems.</desc>
   <defs>
-    <style>
-      .rowGlow,.rowFrame,.shine{transition:opacity .18s ease}
-      .lane:hover .rowGlow{opacity:.26}
-      .lane:hover .rowFrame{opacity:.9}
-      .lane:hover .shine{opacity:.5}
-    </style>
-    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#17212a" stop-opacity="0.96"/>
-      <stop offset="0.52" stop-color="#080c12" stop-opacity="0.98"/>
-      <stop offset="1" stop-color="#030509" stop-opacity="1"/>
-    </linearGradient>
-    <linearGradient id="edge" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#46f4ff" stop-opacity="0.35"/>
-      <stop offset="0.34" stop-color="#f4f1ff" stop-opacity="0.86"/>
-      <stop offset="0.68" stop-color="#c86bff" stop-opacity="0.72"/>
-      <stop offset="1" stop-color="#34f5c5" stop-opacity="0.45"/>
-    </linearGradient>
-    <linearGradient id="glint" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.34" stop-color="#ffffff" stop-opacity="0.1"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.34"/>
-      <stop offset="0.66" stop-color="#b6f7ff" stop-opacity="0.1"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.7" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="laneGlow" x="-10%" y="-80%" width="120%" height="260%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="edgeFlowGlow" x="-8%" y="-22%" width="116%" height="144%">
-      <feGaussianBlur stdDeviation="4.2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1f2028"/><stop offset="1" stop-color="#13131a"/></linearGradient>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ff6090"/><stop offset=".25" stop-color="#e478d0"/><stop offset=".5" stop-color="#c4a7e7"/><stop offset=".75" stop-color="#7dcfff"/><stop offset="1" stop-color="#73daca"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#7dcfff" stroke-opacity=".035"/></pattern>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H1000" stroke="#c0caf5" stroke-opacity=".025"/></pattern>
+    <filter id="glow" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   </defs>
-  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M40 0H0V40" fill="none" stroke="#7dd3fc" stroke-opacity="0.05" stroke-width="1"/>
-  </pattern>
-  <clipPath id="clip"><rect x="1" y="1" width="998" height="308" rx="22"/></clipPath>
-  <rect width="1000" height="310" rx="24" fill="#030509"/>
-  <rect x="1" y="1" width="998" height="308" rx="22" fill="url(#glass)"/>
-  <rect x="1" y="1" width="998" height="308" rx="22" fill="url(#grid)"/>
-  <rect x="2" y="2" width="996" height="306" rx="22" fill="none" stroke="url(#edge)" stroke-width="2"/>
-  <rect x="2" y="2" width="996" height="306" rx="22" fill="none" stroke="url(#edge)" stroke-width="5" stroke-linecap="round" stroke-dasharray="155 845" pathLength="1000" opacity="0.28" filter="url(#edgeFlowGlow)">
-    <animate attributeName="stroke-dashoffset" values="0;-1000" dur="30s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="2" y="2" width="996" height="306" rx="22" fill="none" stroke="url(#edge)" stroke-width="2" stroke-linecap="round" stroke-dasharray="92 908" pathLength="1000" opacity="0.62">
-    <animate attributeName="stroke-dashoffset" values="0;-1000" dur="30s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="11" y="11" width="978" height="288" rx="17" fill="none" stroke="#ffffff" stroke-opacity="0.055"/>
-  <g clip-path="url(#clip)">
-    <path d="M72 18H940L790 78H28Z" fill="url(#glint)" opacity="0.2"/>
-    <path d="M0 265H360L290 310H0Z" fill="#46f4ff" opacity="0.03"/>
-  </g>
-  <text x="42" y="48" fill="#9ff8ff" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="700">OPERATOR DASHBOARD</text>
-  <text x="42" y="74" fill="#9aa9b6" font-family="Consolas, Menlo, monospace" font-size="13">signal map // focus lanes</text>
-  <g font-family="Consolas, Menlo, monospace" font-size="15">
-    <g class="lane" transform="translate(42 102)">
-      <rect width="916" height="42" rx="10" fill="#071019" stroke="#46f4ff" stroke-opacity="0.42"/>
-      <rect class="rowGlow" width="916" height="42" rx="10" fill="#46f4ff" opacity="0.07" filter="url(#laneGlow)"/>
-      <rect class="rowFrame" width="916" height="42" rx="10" fill="none" stroke="#46f4ff" stroke-width="1.4" opacity="0.42"/>
-      <rect class="shine" x="8" y="4" width="650" height="10" rx="5" fill="url(#glint)" opacity="0.18"/>
-      <circle cx="22" cy="21" r="5" fill="#46f4ff" filter="url(#softGlow)"><animate attributeName="opacity" values="0.55;0.9;0.55" dur="12s" repeatCount="indefinite"/></circle>
-      <text x="46" y="26" fill="#ffffff" font-weight="700">AI systems</text>
-      <text x="238" y="26" fill="#aeb9c4">Agent workflows, model-assisted tooling, MCP-style integrations</text>
+  <rect width="1000" height="350" rx="8" fill="#0e0e15"/>
+  <rect x="1" y="1" width="998" height="348" rx="7" fill="url(#bg)"/>
+  <rect x="1" y="1" width="998" height="348" rx="7" fill="url(#grid)"/>
+  <rect x="1" y="1" width="998" height="348" rx="7" fill="url(#scan)"/>
+  <rect x="1.5" y="1.5" width="997" height="347" rx="7" fill="none" stroke="#3b3d57"/>
+  <path d="M1 2H180M820 2H999" stroke="url(#spectrum)" stroke-width="2"/>
+  <path d="M20 20V40M20 20H40M980 20H960M980 20V40M20 330V310M20 330H40M980 330H960M980 330V310" fill="none" stroke="#565f89"/>
+
+  <g font-family="Fira Code, JetBrains Mono, Cascadia Mono, Consolas, monospace">
+    <text x="42" y="44" fill="#e478d0" font-size="13" letter-spacing="1.5">╭─ RESEARCH SURFACE / PROGRAM MAP ─╮</text>
+    <text x="42" y="69" fill="#565f89" font-size="11" letter-spacing="1">QUESTIONS ARE ROUTED THROUGH FOUR CONNECTED RESEARCH PROGRAMS</text>
+    <circle cx="874" cy="40" r="3" fill="#73daca" filter="url(#glow)"/>
+    <text x="887" y="44" fill="#9ece6a" font-size="11" letter-spacing="1">RESEARCH ACTIVE</text>
+
+    <g transform="translate(42 96)">
+      <g>
+        <rect width="204" height="154" fill="#1a1b26" stroke="#ff6090" stroke-opacity=".62"/>
+        <path d="M0 3H204" stroke="#ff6090" stroke-width="3"/>
+        <text x="16" y="30" fill="#ff6090" font-size="11" letter-spacing="1.4">01 / AI RESEARCH</text>
+        <text x="16" y="65" fill="#c0caf5" font-size="15" font-weight="700">Safety + capability</text>
+        <text x="16" y="91" fill="#a9b1d6" font-size="12">evals · boundaries</text>
+        <text x="16" y="111" fill="#a9b1d6" font-size="12">empirical questions</text>
+        <rect x="16" y="132" width="108" height="2" fill="#ff6090" opacity=".3"/>
+        <rect x="16" y="132" width="70" height="2" fill="#ff6090"/>
+        <rect x="178" y="125" width="8" height="8" fill="#ff6090" opacity=".75"/>
+      </g>
+      <g transform="translate(234)">
+        <rect width="204" height="154" fill="#1a1b26" stroke="#c4a7e7" stroke-opacity=".62"/>
+        <path d="M0 3H204" stroke="#c4a7e7" stroke-width="3"/>
+        <text x="16" y="30" fill="#c4a7e7" font-size="11" letter-spacing="1.4">02 / OPEN SOURCE</text>
+        <text x="16" y="65" fill="#c0caf5" font-size="15" font-weight="700">Reproducible work</text>
+        <text x="16" y="91" fill="#a9b1d6" font-size="12">code · docs · models</text>
+        <text x="16" y="111" fill="#a9b1d6" font-size="12">benchmarks · evidence</text>
+        <rect x="16" y="132" width="108" height="2" fill="#c4a7e7" opacity=".3"/>
+        <rect x="16" y="132" width="82" height="2" fill="#c4a7e7"/>
+        <rect x="178" y="125" width="8" height="8" fill="#c4a7e7" opacity=".75"/>
+      </g>
+      <g transform="translate(468)">
+        <rect width="204" height="154" fill="#1a1b26" stroke="#7dcfff" stroke-opacity=".62"/>
+        <path d="M0 3H204" stroke="#7dcfff" stroke-width="3"/>
+        <text x="16" y="30" fill="#7dcfff" font-size="11" letter-spacing="1.4">03 / EMERGENCE</text>
+        <text x="16" y="65" fill="#c0caf5" font-size="15" font-weight="700">Testable hypotheses</text>
+        <text x="16" y="91" fill="#a9b1d6" font-size="12">long-horizon behavior</text>
+        <text x="16" y="111" fill="#a9b1d6" font-size="12">complex systems</text>
+        <rect x="16" y="132" width="108" height="2" fill="#7dcfff" opacity=".3"/>
+        <rect x="16" y="132" width="91" height="2" fill="#7dcfff"/>
+        <rect x="178" y="125" width="8" height="8" fill="#7dcfff" opacity=".75"/>
+      </g>
+      <g transform="translate(702)">
+        <rect width="204" height="154" fill="#1a1b26" stroke="#73daca" stroke-opacity=".62"/>
+        <path d="M0 3H204" stroke="#73daca" stroke-width="3"/>
+        <text x="16" y="30" fill="#73daca" font-size="11" letter-spacing="1.4">04 / AGENT SYSTEMS</text>
+        <text x="16" y="65" fill="#c0caf5" font-size="15" font-weight="700">Memory + agency</text>
+        <text x="16" y="91" fill="#a9b1d6" font-size="12">provenance · retrieval</text>
+        <text x="16" y="111" fill="#a9b1d6" font-size="12">tools · orchestration</text>
+        <rect x="16" y="132" width="108" height="2" fill="#73daca" opacity=".3"/>
+        <rect x="16" y="132" width="100" height="2" fill="#73daca"/>
+        <rect x="178" y="125" width="8" height="8" fill="#73daca" opacity=".75"/>
+      </g>
     </g>
-    <g class="lane" transform="translate(42 152)">
-      <rect width="916" height="42" rx="10" fill="#071019" stroke="#34f5c5" stroke-opacity="0.42"/>
-      <rect class="rowGlow" width="916" height="42" rx="10" fill="#34f5c5" opacity="0.07" filter="url(#laneGlow)"/>
-      <rect class="rowFrame" width="916" height="42" rx="10" fill="none" stroke="#34f5c5" stroke-width="1.4" opacity="0.42"/>
-      <rect class="shine" x="8" y="4" width="650" height="10" rx="5" fill="url(#glint)" opacity="0.18"/>
-      <circle cx="22" cy="21" r="5" fill="#34f5c5" filter="url(#softGlow)"><animate attributeName="opacity" values="0.9;0.55;0.9" dur="14s" repeatCount="indefinite"/></circle>
-      <text x="46" y="26" fill="#ffffff" font-weight="700">Python automation</text>
-      <text x="238" y="26" fill="#aeb9c4">Scripts, CLIs, pipelines, workflow orchestration</text>
+
+    <g transform="translate(42 280)">
+      <text x="0" y="16" fill="#565f89" font-size="11">QUESTION</text>
+      <path d="M58 12H842" stroke="#3b3d57"/>
+      <path d="M58 12H842" stroke="url(#spectrum)" stroke-width="2" stroke-dasharray="140 644" filter="url(#glow)">
+        <animate attributeName="stroke-dashoffset" values="0;-784" dur="10s" repeatCount="indefinite"/>
+      </path>
+      <path d="M842 7L854 12L842 17Z" fill="#73daca"/>
+      <text x="864" y="16" fill="#73daca" font-size="11">EVIDENCE</text>
     </g>
-    <g class="lane" transform="translate(42 202)">
-      <rect width="916" height="42" rx="10" fill="#071019" stroke="#f6dc7a" stroke-opacity="0.42"/>
-      <rect class="rowGlow" width="916" height="42" rx="10" fill="#f6dc7a" opacity="0.07" filter="url(#laneGlow)"/>
-      <rect class="rowFrame" width="916" height="42" rx="10" fill="none" stroke="#f6dc7a" stroke-width="1.4" opacity="0.42"/>
-      <rect class="shine" x="8" y="4" width="650" height="10" rx="5" fill="url(#glint)" opacity="0.18"/>
-      <circle cx="22" cy="21" r="5" fill="#f6dc7a" filter="url(#softGlow)"><animate attributeName="opacity" values="0.55;0.9;0.55" dur="16s" repeatCount="indefinite"/></circle>
-      <text x="46" y="26" fill="#ffffff" font-weight="700">Security automation</text>
-      <text x="238" y="26" fill="#aeb9c4">Recon helpers, validation workflows, hardening checks</text>
-    </g>
-    <g class="lane" transform="translate(42 252)">
-      <rect width="916" height="42" rx="10" fill="#071019" stroke="#c86bff" stroke-opacity="0.42"/>
-      <rect class="rowGlow" width="916" height="42" rx="10" fill="#c86bff" opacity="0.07" filter="url(#laneGlow)"/>
-      <rect class="rowFrame" width="916" height="42" rx="10" fill="none" stroke="#c86bff" stroke-width="1.4" opacity="0.42"/>
-      <rect class="shine" x="8" y="4" width="650" height="10" rx="5" fill="url(#glint)" opacity="0.18"/>
-      <circle cx="22" cy="21" r="5" fill="#c86bff" filter="url(#softGlow)"><animate attributeName="opacity" values="0.9;0.55;0.9" dur="18s" repeatCount="indefinite"/></circle>
-      <text x="46" y="26" fill="#ffffff" font-weight="700">Full-stack builds</text>
-      <text x="238" y="26" fill="#aeb9c4">React, Node, APIs, dashboards, docs, deploy surfaces</text>
-    </g>
+    <text x="42" y="327" fill="#565f89" font-size="10" letter-spacing="1">OBSERVE → TEST → BREAK → DOCUMENT → RELEASE</text>
+    <text x="786" y="327" fill="#565f89" font-size="10" letter-spacing="1">SURFACE / 04 PROGRAMS</text>
   </g>
 </svg>

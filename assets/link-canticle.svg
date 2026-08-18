@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="52" viewBox="0 0 220 52" role="img" aria-labelledby="title desc">
+  <title id="title">Canticle dot cc</title>
+  <desc id="desc">Tokyo Night link button with a cute cat-like ghost spirit and a luminous Canticle crescent.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#24283b"/>
+      <stop offset="0.58" stop-color="#1a1b26"/>
+      <stop offset="1" stop-color="#16161e"/>
+    </linearGradient>
+    <linearGradient id="rgb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff6090"/>
+      <stop offset="0.52" stop-color="#7dcfff"/>
+      <stop offset="1" stop-color="#9ece6a"/>
+    </linearGradient>
+    <linearGradient id="spirit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8ff"/>
+      <stop offset="0.48" stop-color="#c9edff"/>
+      <stop offset="1" stop-color="#e6ddff"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#ff6090" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ff6090" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="shell"><rect x="1" y="1" width="218" height="50" rx="14"/></clipPath>
+  </defs>
+  <rect width="220" height="52" rx="15" fill="#0f111a"/>
+  <rect x="1" y="1" width="218" height="50" rx="14" fill="url(#bg)" stroke="url(#rgb)" stroke-width="1.5"/>
+  <g clip-path="url(#shell)">
+    <circle cx="27" cy="26" r="31" fill="url(#halo)"/>
+    <path d="M48 2h122l-31 16H40z" fill="#ffffff" opacity="0.035"/>
+    <path d="M162 9l1 2 2 .9-2 1-1 2-1-2-2-1 2-.9z" fill="#ff6090"/>
+    <circle cx="177" cy="43" r="1" fill="#9ece6a"/>
+    <path d="M153 45h25" stroke="#7dcfff" stroke-opacity="0.14"/>
+  </g>
+  <rect x="5.5" y="5.5" width="41" height="41" rx="12" fill="#16161e" fill-opacity="0.84" stroke="#ff6090" stroke-opacity="0.48"/>
+  <g transform="translate(6 4)" filter="url(#glow)">
+    <path d="M8.5 30c-1-5 .1-10.9 3.3-14.1l-.6-5.4 5.8 2.8c2.6-.9 5.3-.9 8 0l5.7-2.8-.6 5.5c3.2 3.2 4 9 2.6 14.2-1 3.9 1.1 7.4-1.7 8.8-2.4 1.3-4-1.9-6.6-.2-2.8 1.9-4.6-1.7-7-0.1-2.9 1.9-4.6-1.6-6.6-1.5-2.1.1-1.4-3.8-2.3-7.2z" fill="url(#spirit)" stroke="#ff6090" stroke-width=".75"/>
+    <ellipse cx="17" cy="23.2" rx="1.55" ry="2.1" fill="#1a1b26"/>
+    <ellipse cx="25.3" cy="23.2" rx="1.55" ry="2.1" fill="#1a1b26"/>
+    <circle cx="16.55" cy="22.65" r=".42" fill="#ffffff"/>
+    <circle cx="24.85" cy="22.65" r=".42" fill="#ffffff"/>
+    <path d="M19.2 27.2q1.9 1.7 3.8 0" fill="none" stroke="#1a1b26" stroke-width="1" stroke-linecap="round"/>
+    <ellipse cx="13.8" cy="27" rx="2" ry=".9" fill="#ff6090" opacity=".42"/>
+    <ellipse cx="28.3" cy="27" rx="2" ry=".9" fill="#ff6090" opacity=".42"/>
+  </g>
+  <text x="56" y="23" fill="#c0caf5" font-family="Verdana,Arial,sans-serif" font-size="13.5" font-weight="700">Canticle.cc</text>
+  <text x="56" y="39" fill="#ff9dbb" font-family="Verdana,Arial,sans-serif" font-size="10.5">research home</text>
+  <g transform="translate(188 13)" filter="url(#glow)">
+    <rect width="25" height="26" rx="8" fill="#24283b" stroke="#ff6090" stroke-opacity=".62"/>
+    <path d="M16.8 6.2a7.6 7.6 0 1 0 1.6 13.1 6.3 6.3 0 1 1-1.6-13.1z" fill="#7dcfff"/>
+    <path d="M17.8 9.2l.7 1.7 1.8.7-1.8.7-.7 1.7-.7-1.7-1.8-.7 1.8-.7z" fill="#9ece6a"/>
+  </g>
+</svg>

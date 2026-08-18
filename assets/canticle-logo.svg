@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" role="img" aria-labelledby="title desc">
+  <title id="title">Canticle</title>
+  <desc id="desc">Canticle prompt-square and wordmark lockup from the official website navigation.</desc>
+  <defs>
+    <filter id="brand-glow" x="-25%" y="-50%" width="150%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#brand-glow)">
+    <rect x="2" y="12" width="54" height="40" rx="9" fill="#0a0b0a" stroke="#f7768e" stroke-width="2">
+      <animate attributeName="stroke" values="#f7768e;#ff9e64;#e0af68;#9ece6a;#7dcfff;#7aa2f7;#e478d0;#f7768e" keyTimes="0;.14;.28;.42;.57;.71;.85;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <text x="11" y="39" fill="#9ece6a" font-family="'Fira Code','JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="19" font-weight="700">❯</text>
+    <rect x="38" y="22" width="10" height="20" fill="#f7768e">
+      <animate attributeName="fill" values="#f7768e;#ff9e64;#e0af68;#9ece6a;#7dcfff;#7aa2f7;#e478d0;#f7768e" keyTimes="0;.14;.28;.42;.57;.71;.85;1" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <text x="72" y="42" fill="#f7768e" font-family="'Fira Code','JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="29" font-weight="700" letter-spacing=".6">Canticle
+      <animate attributeName="fill" values="#f7768e;#ff9e64;#e0af68;#9ece6a;#7dcfff;#7aa2f7;#e478d0;#f7768e" keyTimes="0;.14;.28;.42;.57;.71;.85;1" dur="8s" repeatCount="indefinite"/>
+    </text>
+  </g>
+</svg>

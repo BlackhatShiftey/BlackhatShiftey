@@ -1,0 +1,40 @@
+{
+  "asset": "canticle-profile-hero.gif",
+  "approval_state": "approved_for_profile",
+  "brand": "Canticle Research",
+  "composer": "tools/generate_canticle_profile_assets.py",
+  "generated_date": "2026-08-18",
+  "dimensions": [
+    1200,
+    440
+  ],
+  "frame_count": 42,
+  "frame_duration_ms": 111,
+  "palette": [
+    "#f7768e",
+    "#ff9e64",
+    "#e0af68",
+    "#9ece6a",
+    "#7dcfff",
+    "#7aa2f7",
+    "#e478d0"
+  ],
+  "source": "ghost-duo-square-00003.png",
+  "source_sha256": "5709e14437b5b9e00aa8a67bd9ad720c1ef3bcc5f5264ff99c8ffe816729b174",
+  "source_origin": "local Canticle duo square batch slot 3",
+  "source_lineage": "AnimagineXL 3.1, seed 20260820, batch slot 3",
+  "source_dimensions": [
+    1024,
+    1024
+  ],
+  "source_sampler": "dpmpp_2m",
+  "source_scheduler": "karras",
+  "source_steps": 28,
+  "source_cfg": 6.5,
+  "source_prompt": "masterpiece, best quality, anime style, 1girl, ghost girl, cute kawaii spirit mascot, translucent glowing white body, big sparkling eyes, sweet smile, small cute ghost companion floating beside her, matching design, cute duo, two characters, floating pose, sparkling particles, stars, neon pink rim lighting, cyan glow, mint green accents, holographic shimmer, dark navy background, night palette, glowing, soft lighting, full body, centered composition",
+  "source_negative_prompt": "lowres, bad anatomy, bad hands, text, error, missing fingers, fewer digits, cropped, worst quality, low quality, jpeg artifacts, signature, watermark, username, blurry, realistic, 3d, nsfw, nude, scary, grotesque",
+  "cameo": "ghost-cameo.png",
+  "cameo_sha256": "e3a842de0b7e33b034accedebb591bc78023d4c7eef30f1decc78c8c3ded574f",
+  "png_sha256": "057e810819fc198b75549cb692240fa119e9d8876d8c0155ac5137da319348c9",
+  "gif_sha256": "3e749cfa919740507ee953c969272aeea72f926a0ec0618b5a7c113c977d67c9"
+}
