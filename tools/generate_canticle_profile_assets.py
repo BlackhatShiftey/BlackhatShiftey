@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import math
 import subprocess
 import tempfile
 from collections import Counter
@@ -14,12 +13,13 @@ from functools import lru_cache
 from pathlib import Path
 
 from PIL import __version__ as PILLOW_VERSION
-from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 GHOST_SOURCE = ASSETS / "ghost-duo-square-00003.png"
+GHOST_MOTION_SOURCE = ASSETS / "ghost-duo-square-00003-dance.mp4"
 PNG_OUT = ASSETS / "canticle-profile-hero.png"
 GIF_OUT = ASSETS / "canticle-profile-hero.gif"
 CAMEO_OUT = ASSETS / "ghost-cameo.png"
@@ -27,12 +27,27 @@ META_OUT = ASSETS / "canticle-profile-hero.provenance.json"
 
 WIDTH = 1200
 HEIGHT = 440
-FRAME_COUNT = 48
 FRAME_RATE = 12
-MASCOT_POSE_COUNT = 24
-GIF_COLORS = 64
+SOURCE_FRAME_COUNT = 120
+LOOP_BLEND_FRAMES = 12
+FRAME_COUNT = SOURCE_FRAME_COUNT - LOOP_BLEND_FRAMES
+GIF_COLORS = 96
 MASCOT_SIZE = 560
 MASCOT_CENTER = (960, 225)
+MASCOT_POSITION = (
+    round(MASCOT_CENTER[0] - MASCOT_SIZE / 2),
+    round(MASCOT_CENTER[1] - MASCOT_SIZE / 2),
+)
+MASCOT_VISIBLE_SOURCE_BOX = (
+    max(0, -MASCOT_POSITION[0]),
+    max(0, -MASCOT_POSITION[1]),
+    min(MASCOT_SIZE, WIDTH - MASCOT_POSITION[0]),
+    min(MASCOT_SIZE, HEIGHT - MASCOT_POSITION[1]),
+)
+MASCOT_VISIBLE_POSITION = (
+    max(0, MASCOT_POSITION[0]),
+    max(0, MASCOT_POSITION[1]),
+)
 PALETTE = [
     "#f7768e",
     "#ff9e64",
@@ -111,121 +126,85 @@ def gradient_background() -> Image.Image:
     return image
 
 
-def prepare_mascot_source() -> Image.Image:
-    source = Image.open(GHOST_SOURCE).convert("RGBA")
-    source = source.resize((MASCOT_SIZE, MASCOT_SIZE), Image.Resampling.LANCZOS)
-
-    edge_mask = Image.new("L", source.size, 255)
-    edge_pixels = edge_mask.load()
-    for y in range(source.height):
-        vertical = min(1.0, y / 18, (source.height - 1 - y) / 30)
-        for x in range(source.width):
+@lru_cache(maxsize=1)
+def mascot_edge_mask() -> Image.Image:
+    """Return the fixed soft-edge mask used by both motion and still artwork."""
+    mask = Image.new("L", (MASCOT_SIZE, MASCOT_SIZE), 255)
+    pixels = mask.load()
+    for y in range(MASCOT_SIZE):
+        vertical = min(1.0, y / 18, (MASCOT_SIZE - 1 - y) / 30)
+        for x in range(MASCOT_SIZE):
             horizontal = min(1.0, x / 145)
-            edge_pixels[x, y] = max(0, round(255 * horizontal * vertical * 0.95))
-    source.putalpha(edge_mask)
-    return source
+            pixels[x, y] = max(0, round(255 * horizontal * vertical * 0.95))
+    return mask
 
 
-def mascot_motion(phase: float) -> dict[str, float]:
-    """Return a gentle, exactly periodic four-second floating-dance pose."""
-    angle = phase * math.tau
-    return {
-        "sway_x": 9.0 * math.sin(angle) + 2.0 * math.sin(2 * angle),
-        "bob_y": -5.0 * (1.0 - math.cos(2 * angle)) + 1.3 * math.sin(angle),
-        "rotation_degrees": 1.2 * math.sin(angle) + 0.25 * math.sin(2 * angle),
-        "scale": 1.0 + 0.012 * math.sin(2 * angle),
-        "velocity_x": 9.0 * math.cos(angle) + 4.0 * math.cos(2 * angle),
-        "velocity_y": -10.0 * math.sin(2 * angle) + 1.3 * math.cos(angle),
-    }
+@lru_cache(maxsize=1)
+def static_mascot_source() -> Image.Image:
+    """Load the approved still only when a reduced-motion frame is rendered."""
+    with Image.open(GHOST_SOURCE) as source:
+        return source.convert("RGB").resize(
+            (MASCOT_SIZE, MASCOT_SIZE),
+            Image.Resampling.LANCZOS,
+        )
 
 
-def tinted_afterimage(
-    source: Image.Image,
-    mask: Image.Image,
-    color: tuple[int, int, int],
-    opacity: float,
-) -> Image.Image:
-    afterimage = Image.new("RGBA", source.size, (*color, 0))
-    afterimage.putalpha(mask.point(lambda value: round(value * opacity)))
-    return afterimage
-
-
-@lru_cache(maxsize=MASCOT_POSE_COUNT)
-def mascot_pose(pose_index: int) -> tuple[Image.Image, Image.Image]:
-    """Build one reusable transform pose to keep the GIF compact and stable."""
-    pose_phase = pose_index / MASCOT_POSE_COUNT
-    pose_motion = mascot_motion(pose_phase)
-    scaled_size = round(MASCOT_SIZE * pose_motion["scale"])
-    transformed = MASCOT_SOURCE.resize((scaled_size, scaled_size), Image.Resampling.LANCZOS)
-    transformed = transformed.rotate(
-        pose_motion["rotation_degrees"],
-        resample=Image.Resampling.BICUBIC,
-        expand=True,
+def decode_motion_source() -> list[Image.Image]:
+    """Decode the normalized motion source without applying any camera transform."""
+    result = subprocess.run(
+        [
+            "ffmpeg", "-hide_banner", "-loglevel", "error",
+            "-i", str(GHOST_MOTION_SOURCE),
+            "-map", "0:v:0",
+            "-frames:v", str(SOURCE_FRAME_COUNT),
+            "-vf", f"scale={MASCOT_SIZE}:{MASCOT_SIZE}:flags=lanczos",
+            "-pix_fmt", "rgb24",
+            "-f", "rawvideo",
+            "-",
+        ],
+        check=True,
+        capture_output=True,
     )
-    luminance = ImageOps.grayscale(transformed)
-    highlights = luminance.point(lambda value: max(0, min(255, round((value - 58) * 1.48))))
-    return transformed, ImageChops.multiply(highlights, transformed.getchannel("A"))
+    frame_size = MASCOT_SIZE * MASCOT_SIZE * 3
+    expected_size = SOURCE_FRAME_COUNT * frame_size
+    if len(result.stdout) != expected_size:
+        raise RuntimeError(
+            f"motion source decoded to {len(result.stdout)} bytes; expected {expected_size}"
+        )
+    return [
+        Image.frombytes(
+            "RGB",
+            (MASCOT_SIZE, MASCOT_SIZE),
+            result.stdout[index * frame_size : (index + 1) * frame_size],
+        )
+        for index in range(SOURCE_FRAME_COUNT)
+    ]
 
 
-def mascot_layer(phase: float) -> Image.Image:
-    motion = mascot_motion(phase)
-    pose_index = math.floor(phase * MASCOT_POSE_COUNT) % MASCOT_POSE_COUNT
-    transformed, highlights = mascot_pose(pose_index)
+def loop_motion_frame(frame_index: int, motion_frames: list[Image.Image]) -> Image.Image:
+    """Return one anchored frame with a one-second end-to-start loop blend."""
+    main_count = SOURCE_FRAME_COUNT - 2 * LOOP_BLEND_FRAMES
+    if frame_index < main_count:
+        return motion_frames[LOOP_BLEND_FRAMES + frame_index].copy()
 
-    x = round(MASCOT_CENTER[0] + motion["sway_x"] - transformed.width / 2)
-    y = round(MASCOT_CENTER[1] + motion["bob_y"] - transformed.height / 2)
+    blend_index = frame_index - main_count
+    blend_amount = (blend_index + 1) / LOOP_BLEND_FRAMES
+    return Image.blend(
+        motion_frames[SOURCE_FRAME_COUNT - LOOP_BLEND_FRAMES + blend_index],
+        motion_frames[blend_index],
+        blend_amount,
+    )
 
+
+def mascot_layer(source: Image.Image) -> Image.Image:
+    """Place one frame at an invariant position, scale, rotation, and crop."""
+    source = source.convert("RGBA")
+    source.putalpha(mascot_edge_mask())
+    source = source.crop(MASCOT_VISIBLE_SOURCE_BOX)
     layer = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
-    position = (x, y)
+    layer.alpha_composite(source, MASCOT_VISIBLE_POSITION)
 
-    # Restrict the spectral trail to the source's bright character/neon details,
-    # avoiding a tinted duplicate of the square artwork's dark background.
-    speed = math.hypot(motion["velocity_x"], motion["velocity_y"])
-    speed_ratio = min(1.0, speed / 15.0)
-    if speed:
-        trail_x = -motion["velocity_x"] / speed
-        trail_y = -motion["velocity_y"] / speed
-    else:
-        trail_x = trail_y = 0.0
-    trail_distance = 2.2 + 2.0 * speed_ratio
-
-    cyan = tinted_afterimage(
-        transformed,
-        highlights,
-        rgb("#7dcfff"),
-        0.105,
-    )
-    pink = tinted_afterimage(
-        transformed,
-        highlights,
-        rgb("#f7768e"),
-        0.078,
-    )
-    cyan_position = (
-        round(x + trail_x * trail_distance),
-        round(y + trail_y * trail_distance),
-    )
-    pink_position = (
-        round(x - trail_x * trail_distance * 0.58),
-        round(y - trail_y * trail_distance * 0.58),
-    )
-    cyan_bloom = Image.new("RGBA", layer.size, (0, 0, 0, 0))
-    cyan_bloom.alpha_composite(cyan, cyan_position)
-    layer.alpha_composite(cyan_bloom.filter(ImageFilter.GaussianBlur(6)))
-    layer.alpha_composite(cyan, cyan_position)
-    pink_bloom = Image.new("RGBA", layer.size, (0, 0, 0, 0))
-    pink_bloom.alpha_composite(pink, pink_position)
-    layer.alpha_composite(pink_bloom.filter(ImageFilter.GaussianBlur(5)))
-    layer.alpha_composite(pink, pink_position)
-
-    glow = Image.new("RGBA", layer.size, (0, 0, 0, 0))
-    glow.alpha_composite(transformed, position)
-    glow_alpha = glow.getchannel("A").point(lambda value: round(value * 0.34))
-    glow.putalpha(glow_alpha)
-    layer.alpha_composite(glow.filter(ImageFilter.GaussianBlur(18)))
-    layer.alpha_composite(transformed, position)
-
-    # The fade remains fixed so the dancing art never reduces left-copy contrast.
+    # The fade is phase-independent so the moving art never reduces copy contrast.
     fade = Image.new("RGBA", layer.size, (0, 0, 0, 0))
     fade_draw = ImageDraw.Draw(fade)
     for x in range(670, 890):
@@ -236,7 +215,6 @@ def mascot_layer(phase: float) -> Image.Image:
 
 
 BASE = gradient_background()
-MASCOT_SOURCE = prepare_mascot_source()
 
 
 def render_cameo() -> None:
@@ -270,16 +248,16 @@ def draw_chip(draw: ImageDraw.ImageDraw, x: int, y: int, label: str, color: tupl
     return x + width + 10
 
 
-def draw_border(image: Image.Image, phase: float) -> None:
+def draw_border(image: Image.Image) -> None:
     overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
     step = 5
     for x in range(0, WIDTH, step):
-        color = spectrum(phase + x / WIDTH)
+        color = spectrum(x / WIDTH)
         draw.line((x, 1, min(WIDTH - 1, x + step), 1), fill=(*color, 225), width=3)
         draw.line((WIDTH - 1 - x, HEIGHT - 2, max(0, WIDTH - 1 - x - step), HEIGHT - 2), fill=(*color, 180), width=2)
     for y in range(0, HEIGHT, step):
-        color = spectrum(phase + 0.35 + y / HEIGHT)
+        color = spectrum(0.35 + y / HEIGHT)
         draw.line((1, y, 1, min(HEIGHT - 1, y + step)), fill=(*color, 190), width=2)
         draw.line((WIDTH - 2, HEIGHT - 1 - y, WIDTH - 2, max(0, HEIGHT - 1 - y - step)), fill=(*color, 190), width=2)
     bloom = overlay.copy()
@@ -288,18 +266,27 @@ def draw_border(image: Image.Image, phase: float) -> None:
     image.alpha_composite(overlay)
 
 
-def draw_frame(frame_index: int) -> Image.Image:
-    phase = frame_index / FRAME_COUNT
+def draw_frame(
+    frame_index: int,
+    motion_frames: list[Image.Image] | None = None,
+    *,
+    reduced_motion: bool = False,
+) -> Image.Image:
     image = BASE.copy()
-    image.alpha_composite(mascot_layer(phase))
+    if reduced_motion:
+        mascot_source = static_mascot_source()
+    else:
+        if motion_frames is None:
+            raise ValueError("motion_frames are required for animated output")
+        mascot_source = loop_motion_frame(frame_index, motion_frames)
+    image.alpha_composite(mascot_layer(mascot_source))
     draw = ImageDraw.Draw(image)
 
-    # Canticle prompt-square lockup.
-    brand_color = spectrum(phase)
+    # Canticle prompt-square lockup. All identity pixels remain fixed.
+    brand_color = rgb("#e0af68")
     draw.rounded_rectangle((50, 42, 112, 88), radius=10, fill=(*rgb("#090b0f"), 255), outline=(*brand_color, 255), width=2)
     draw.text((62, 50), "❯", font=font(22, mono=True, bold=True), fill=(*rgb("#9ece6a"), 255))
-    if frame_index % 12 < 8:
-        draw.rectangle((91, 53, 102, 77), fill=(*brand_color, 255))
+    draw.rectangle((91, 53, 102, 77), fill=(*brand_color, 255))
     draw.text((130, 48), "Canticle Research", font=font(23, mono=True, bold=True), fill=(*brand_color, 255))
     draw.text((131, 76), "INDEPENDENT AI RESEARCH", font=font(10, mono=True), fill=(*rgb("#7f849c"), 255), spacing=3)
 
@@ -319,26 +306,21 @@ def draw_frame(frame_index: int) -> Image.Image:
     draw.text((221, 382), "MODE / BUILD + VERIFY", font=font(11, mono=True), fill=(*rgb("#7f849c"), 255))
     draw.text((466, 382), "SIGNAL / PUBLIC RESEARCH", font=font(11, mono=True), fill=(*rgb("#73daca"), 255))
     draw.text((51, 409), "canticle.cc  ·  github.com/Canticle-AI-Research", font=font(11, mono=True), fill=(*rgb("#565f89"), 255))
-    ghost_color = spectrum(phase + 0.58)
+    ghost_color = rgb("#e478d0")
     draw.rounded_rectangle((874, 388, 1162, 420), radius=7, fill=(*rgb("#0a0b0f"), 220), outline=(*ghost_color, 180), width=1)
     draw.text((892, 398), "GHOST // GIRL + SPIRIT FORMS", font=font(10, mono=True, bold=True), fill=(*ghost_color, 255))
 
-    # Animated spectral particles keep motion inside the asset for GitHub.
+    # Spectral accents are intentionally phase-independent; only Ghost moves.
     particles = [(760, 68, 3), (1092, 54, 4), (755, 192, 2), (1142, 220, 3), (731, 335, 4), (1082, 372, 2)]
     particle_layer = Image.new("RGBA", image.size, (0, 0, 0, 0))
     particle_draw = ImageDraw.Draw(particle_layer)
     for index, (x, y, radius) in enumerate(particles):
-        pulse = 0.45 + 0.55 * math.sin((phase + index / len(particles)) * math.tau) ** 2
-        color = spectrum(phase + index / len(particles))
-        particle_draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(*color, round(235 * pulse)))
+        color = spectrum(index / len(particles))
+        particle_draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(*color, 180))
     image.alpha_composite(particle_layer.filter(ImageFilter.GaussianBlur(7)))
     image.alpha_composite(particle_layer)
 
-    # A restrained moving scanline; no pulsing of the whole composition.
-    scanline_y = round((phase * (HEIGHT + 90)) - 45)
-    scanline = Image.new("RGBA", image.size, (0, 0, 0, 0))
-    ImageDraw.Draw(scanline).rectangle((0, scanline_y, WIDTH, scanline_y + 2), fill=(125, 207, 255, 22))
-    image.alpha_composite(scanline.filter(ImageFilter.GaussianBlur(3)))
+    # The scanline texture is static; no full-width moving overlay remains.
     scanlines = Image.new("RGBA", image.size, (0, 0, 0, 0))
     scanlines_draw = ImageDraw.Draw(scanlines)
     for y in range(0, HEIGHT, 4):
@@ -346,7 +328,7 @@ def draw_frame(frame_index: int) -> Image.Image:
     image.alpha_composite(scanlines)
 
     draw.rounded_rectangle((6, 6, WIDTH - 7, HEIGHT - 7), radius=13, outline=(*rgb("#3b4261"), 170), width=1)
-    draw_border(image, phase)
+    draw_border(image)
     return image.convert("RGB")
 
 
@@ -376,9 +358,12 @@ def gif_timing(path: Path) -> tuple[list[int], int]:
 def main() -> int:
     if not GHOST_SOURCE.exists():
         raise SystemExit(f"missing approved brand source: {GHOST_SOURCE.relative_to(ROOT)}")
+    if not GHOST_MOTION_SOURCE.exists():
+        raise SystemExit(f"missing approved motion source: {GHOST_MOTION_SOURCE.relative_to(ROOT)}")
 
-    frames = [draw_frame(index) for index in range(FRAME_COUNT)]
-    frames[0].save(PNG_OUT, optimize=True)
+    motion_frames = decode_motion_source()
+    frames = [draw_frame(index, motion_frames) for index in range(FRAME_COUNT)]
+    draw_frame(0, reduced_motion=True).save(PNG_OUT, optimize=True)
     with tempfile.TemporaryDirectory(prefix="canticle-profile-") as temporary:
         frame_dir = Path(temporary)
         for index, frame in enumerate(frames):
@@ -417,20 +402,37 @@ def main() -> int:
         "encoded_total_duration_ms": sum(encoded_durations),
         "gif_loop_count": loop_count,
         "motion": {
-            "description": "The exact approved girl-plus-four-spirit ensemble floats as one seamless dance: a slow side-to-side sway, two gentle vertical lifts, subtle off-axis roll, and a tiny breathing scale change over four seconds. Restrained cyan and pink highlight afterimages follow the instantaneous direction and speed of travel; fixed left-side fading preserves copy contrast.",
-            "sampling": "48 periodic position/trail samples at phase frame_index / 48, with 24 reusable bicubic rotation/scale poses; the implicit frame 47 to frame 0 transition closes the loop without a duplicated endpoint.",
-            "sway_x_pixels": "9*sin(t) + 2*sin(2t)",
-            "bob_y_pixels": "-5*(1-cos(2t)) + 1.3*sin(t)",
-            "rotation_degrees": "1.2*sin(t) + 0.25*sin(2t)",
-            "scale": "1 + 0.012*sin(2t)",
-            "character_source_edit": "none; the complete source ensemble is transformed without repainting or regeneration",
-            "static_layout": "all typography, labels, chips, copy positions, and safe-area geometry are unchanged",
+            "description": "The operator-supplied animation of the exact approved girl-plus-four-spirit square plays inside one fixed right-side window. The source artwork itself supplies the articulated dance; the composer adds no whole-image sway, bob, rotation, scale, or motion trail.",
+            "sampling": "120 normalized source frames at 12 fps. Frames 12 through 107 are used in source order before the fixed crop, edge mask, and composition; 12 end-to-start crossfade frames close the loop, with the final blend preceding source frame 12.",
+            "source_frame_count": SOURCE_FRAME_COUNT,
+            "loop_blend_frames": LOOP_BLEND_FRAMES,
+            "motion_window_xywh": [
+                MASCOT_VISIBLE_POSITION[0],
+                MASCOT_VISIBLE_POSITION[1],
+                MASCOT_VISIBLE_SOURCE_BOX[2] - MASCOT_VISIBLE_SOURCE_BOX[0],
+                MASCOT_VISIBLE_SOURCE_BOX[3] - MASCOT_VISIBLE_SOURCE_BOX[1],
+            ],
+            "motion_source_crop_xyxy": list(MASCOT_VISIBLE_SOURCE_BOX),
+            "translation_pixels": [0, 0],
+            "rotation_degrees": 0,
+            "scale": 1,
+            "character_source_edit": "none; the exact supplied animation frames are decoded and anchored without repainting or regeneration",
+            "static_layout": "typography, labels, chips, cursor, particles, scanline texture, border, background, crop position, and safe-area geometry are phase-independent",
         },
         "pillow_version": PILLOW_VERSION,
         "ffmpeg_version": ffmpeg_version(),
         "gif_palette_max_colors": GIF_COLORS,
         "gif_dither": "none",
         "palette": PALETTE,
+        "motion_source": GHOST_MOTION_SOURCE.name,
+        "motion_source_sha256": sha256(GHOST_MOTION_SOURCE),
+        "motion_source_dimensions": [MASCOT_SIZE, MASCOT_SIZE],
+        "motion_source_frame_rate_fps": FRAME_RATE,
+        "motion_source_frame_count": SOURCE_FRAME_COUNT,
+        "motion_source_duration_ms": 10000,
+        "motion_source_original_filename": "cute_Blackhatshiftey_Canticle-girl.mp4",
+        "motion_source_original_sha256": "c75ef04a22da4baca549bd601f3490de0c28f1860b0d20e8fa77c0a48f85bf42",
+        "motion_source_normalization": "primary H.264 video stream only; audio and attached cover art removed; 560x560, 12 fps, 120 frames, libx264 CRF 18",
         "source": GHOST_SOURCE.name,
         "source_sha256": sha256(GHOST_SOURCE),
         "source_origin": "local Canticle duo square batch slot 3",
@@ -449,7 +451,7 @@ def main() -> int:
     }
     META_OUT.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
     print(f"rendered {PNG_OUT.relative_to(ROOT)} ({WIDTH}x{HEIGHT})")
-    print(f"rendered {GIF_OUT.relative_to(ROOT)} ({FRAME_COUNT} frames)")
+    print(f"rendered {GIF_OUT.relative_to(ROOT)} ({FRAME_COUNT} anchored motion frames)")
     print(f"rendered {CAMEO_OUT.relative_to(ROOT)}")
     print(f"wrote {META_OUT.relative_to(ROOT)}")
     return 0

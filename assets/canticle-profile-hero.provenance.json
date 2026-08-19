@@ -4,36 +4,52 @@
   "brand": "Canticle Research",
   "composer": "tools/generate_canticle_profile_assets.py",
   "generated_date": "2026-08-19",
-  "generated_at_utc": "2026-08-19T03:32:42+00:00",
+  "generated_at_utc": "2026-08-19T04:53:47+00:00",
   "dimensions": [
     1200,
     440
   ],
-  "frame_count": 48,
+  "frame_count": 108,
   "requested_frame_rate_fps": 12,
   "requested_frame_period_ms": {
     "numerator": 1000,
     "denominator": 12
   },
   "encoded_frame_duration_counts_ms": {
-    "80": 32,
-    "90": 16
+    "80": 72,
+    "90": 36
   },
-  "encoded_total_duration_ms": 4000,
+  "encoded_total_duration_ms": 9000,
   "gif_loop_count": 0,
   "motion": {
-    "description": "The exact approved girl-plus-four-spirit ensemble floats as one seamless dance: a slow side-to-side sway, two gentle vertical lifts, subtle off-axis roll, and a tiny breathing scale change over four seconds. Restrained cyan and pink highlight afterimages follow the instantaneous direction and speed of travel; fixed left-side fading preserves copy contrast.",
-    "sampling": "48 periodic position/trail samples at phase frame_index / 48, with 24 reusable bicubic rotation/scale poses; the implicit frame 47 to frame 0 transition closes the loop without a duplicated endpoint.",
-    "sway_x_pixels": "9*sin(t) + 2*sin(2t)",
-    "bob_y_pixels": "-5*(1-cos(2t)) + 1.3*sin(t)",
-    "rotation_degrees": "1.2*sin(t) + 0.25*sin(2t)",
-    "scale": "1 + 0.012*sin(2t)",
-    "character_source_edit": "none; the complete source ensemble is transformed without repainting or regeneration",
-    "static_layout": "all typography, labels, chips, copy positions, and safe-area geometry are unchanged"
+    "description": "The operator-supplied animation of the exact approved girl-plus-four-spirit square plays inside one fixed right-side window. The source artwork itself supplies the articulated dance; the composer adds no whole-image sway, bob, rotation, scale, or motion trail.",
+    "sampling": "120 normalized source frames at 12 fps. Frames 12 through 107 are used in source order before the fixed crop, edge mask, and composition; 12 end-to-start crossfade frames close the loop, with the final blend preceding source frame 12.",
+    "source_frame_count": 120,
+    "loop_blend_frames": 12,
+    "motion_window_xywh": [
+      680,
+      0,
+      520,
+      440
+    ],
+    "motion_source_crop_xyxy": [
+      0,
+      55,
+      520,
+      495
+    ],
+    "translation_pixels": [
+      0,
+      0
+    ],
+    "rotation_degrees": 0,
+    "scale": 1,
+    "character_source_edit": "none; the exact supplied animation frames are decoded and anchored without repainting or regeneration",
+    "static_layout": "typography, labels, chips, cursor, particles, scanline texture, border, background, crop position, and safe-area geometry are phase-independent"
   },
   "pillow_version": "10.2.0",
   "ffmpeg_version": "6.1.1-3ubuntu5+esm10",
-  "gif_palette_max_colors": 64,
+  "gif_palette_max_colors": 96,
   "gif_dither": "none",
   "palette": [
     "#f7768e",
@@ -44,6 +60,18 @@
     "#7aa2f7",
     "#e478d0"
   ],
+  "motion_source": "ghost-duo-square-00003-dance.mp4",
+  "motion_source_sha256": "c49406cb3f2bd01aa47fa664607e19f8c1b522731a213456086a683e503221df",
+  "motion_source_dimensions": [
+    560,
+    560
+  ],
+  "motion_source_frame_rate_fps": 12,
+  "motion_source_frame_count": 120,
+  "motion_source_duration_ms": 10000,
+  "motion_source_original_filename": "cute_Blackhatshiftey_Canticle-girl.mp4",
+  "motion_source_original_sha256": "c75ef04a22da4baca549bd601f3490de0c28f1860b0d20e8fa77c0a48f85bf42",
+  "motion_source_normalization": "primary H.264 video stream only; audio and attached cover art removed; 560x560, 12 fps, 120 frames, libx264 CRF 18",
   "source": "ghost-duo-square-00003.png",
   "source_sha256": "5709e14437b5b9e00aa8a67bd9ad720c1ef3bcc5f5264ff99c8ffe816729b174",
   "source_origin": "local Canticle duo square batch slot 3",
@@ -60,6 +88,6 @@
   "source_negative_prompt": "lowres, bad anatomy, bad hands, text, error, missing fingers, fewer digits, cropped, worst quality, low quality, jpeg artifacts, signature, watermark, username, blurry, realistic, 3d, nsfw, nude, scary, grotesque",
   "cameo": "ghost-cameo.png",
   "cameo_sha256": "e3a842de0b7e33b034accedebb591bc78023d4c7eef30f1decc78c8c3ded574f",
-  "png_sha256": "b78b008121b6eb0e314d559982932b905ef056decdb2efa9efe5de946aefc7ba",
-  "gif_sha256": "15ffcb70ecffca73f6e63fec55ad70e116fdb64f4388bf801dd651f215e61ee5"
+  "png_sha256": "407eba74ac779a32ed05fe2f585f8271bfe225d8082196c1bd0ea23fc11fc425",
+  "gif_sha256": "91bf5f026f3f2681f2dc6bd28ec84f4368f54c67f356ec0e0778d7c13ee54371"
 }
