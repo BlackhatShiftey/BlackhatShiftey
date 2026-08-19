@@ -1,0 +1,47 @@
+{
+  "asset": "cyber-divider.gif",
+  "approval_state": "approved_for_profile",
+  "brand": "Canticle Research",
+  "composer": "tools/generate_cyber_divider.py",
+  "generated_date": "2026-08-18",
+  "dimensions": [
+    1000,
+    72
+  ],
+  "frame_count": 48,
+  "frame_rate": 12,
+  "nominal_frame_duration_ms": 83.333,
+  "encoded_frame_duration_counts_ms": {
+    "80": 32,
+    "90": 16
+  },
+  "encoded_total_duration_ms": 4000,
+  "loop_duration_seconds": 4.0,
+  "motion": "staggered relay; each cube grows, bobs, intensifies its own color glow, and completes a smooth off-axis X/Y tumble before settling",
+  "carrier_line_motion": "none; static neutral terminal carrier",
+  "individual_cube_glow": true,
+  "renderer": "Pillow 10.2.0 projected 3D geometry",
+  "encoder": "ffmpeg version 6.1.1-3ubuntu5+esm10 Copyright (c) 2000-2023 the FFmpeg developers",
+  "transparent_background": true,
+  "palette": [
+    "#f7768e",
+    "#ff9e64",
+    "#e0af68",
+    "#9ece6a",
+    "#7dcfff",
+    "#7aa2f7",
+    "#e478d0"
+  ],
+  "cube_colors": [
+    "#ff6090",
+    "#e478d0",
+    "#c4a7e7",
+    "#7dcfff",
+    "#73daca",
+    "#e0af68"
+  ],
+  "static_poster": "cyber-divider.png",
+  "static_poster_frame": 18,
+  "static_poster_sha256": "be3afe7937892f964073ec2493ec3224725586e2be39074064774b7f544190b0",
+  "gif_sha256": "8051bca40e499b79fabf8af5ff079c8ef763bb7d72bab09d1be91007b3266290"
+}

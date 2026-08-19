@@ -8,9 +8,13 @@ import json
 import math
 import subprocess
 import tempfile
+from collections import Counter
+from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import __version__ as PILLOW_VERSION
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,9 +27,12 @@ META_OUT = ASSETS / "canticle-profile-hero.provenance.json"
 
 WIDTH = 1200
 HEIGHT = 440
-FRAME_COUNT = 42
-FRAME_RATE = 9
-FRAME_DURATION_MS = round(1000 / FRAME_RATE)
+FRAME_COUNT = 48
+FRAME_RATE = 12
+MASCOT_POSE_COUNT = 24
+GIF_COLORS = 64
+MASCOT_SIZE = 560
+MASCOT_CENTER = (960, 225)
 PALETTE = [
     "#f7768e",
     "#ff9e64",
@@ -104,10 +111,9 @@ def gradient_background() -> Image.Image:
     return image
 
 
-def mascot_layer() -> Image.Image:
+def prepare_mascot_source() -> Image.Image:
     source = Image.open(GHOST_SOURCE).convert("RGBA")
-    target_size = 560
-    source = source.resize((target_size, target_size), Image.Resampling.LANCZOS)
+    source = source.resize((MASCOT_SIZE, MASCOT_SIZE), Image.Resampling.LANCZOS)
 
     edge_mask = Image.new("L", source.size, 255)
     edge_pixels = edge_mask.load()
@@ -117,16 +123,109 @@ def mascot_layer() -> Image.Image:
             horizontal = min(1.0, x / 145)
             edge_pixels[x, y] = max(0, round(255 * horizontal * vertical * 0.95))
     source.putalpha(edge_mask)
+    return source
+
+
+def mascot_motion(phase: float) -> dict[str, float]:
+    """Return a gentle, exactly periodic four-second floating-dance pose."""
+    angle = phase * math.tau
+    return {
+        "sway_x": 9.0 * math.sin(angle) + 2.0 * math.sin(2 * angle),
+        "bob_y": -5.0 * (1.0 - math.cos(2 * angle)) + 1.3 * math.sin(angle),
+        "rotation_degrees": 1.2 * math.sin(angle) + 0.25 * math.sin(2 * angle),
+        "scale": 1.0 + 0.012 * math.sin(2 * angle),
+        "velocity_x": 9.0 * math.cos(angle) + 4.0 * math.cos(2 * angle),
+        "velocity_y": -10.0 * math.sin(2 * angle) + 1.3 * math.cos(angle),
+    }
+
+
+def tinted_afterimage(
+    source: Image.Image,
+    mask: Image.Image,
+    color: tuple[int, int, int],
+    opacity: float,
+) -> Image.Image:
+    afterimage = Image.new("RGBA", source.size, (*color, 0))
+    afterimage.putalpha(mask.point(lambda value: round(value * opacity)))
+    return afterimage
+
+
+@lru_cache(maxsize=MASCOT_POSE_COUNT)
+def mascot_pose(pose_index: int) -> tuple[Image.Image, Image.Image]:
+    """Build one reusable transform pose to keep the GIF compact and stable."""
+    pose_phase = pose_index / MASCOT_POSE_COUNT
+    pose_motion = mascot_motion(pose_phase)
+    scaled_size = round(MASCOT_SIZE * pose_motion["scale"])
+    transformed = MASCOT_SOURCE.resize((scaled_size, scaled_size), Image.Resampling.LANCZOS)
+    transformed = transformed.rotate(
+        pose_motion["rotation_degrees"],
+        resample=Image.Resampling.BICUBIC,
+        expand=True,
+    )
+    luminance = ImageOps.grayscale(transformed)
+    highlights = luminance.point(lambda value: max(0, min(255, round((value - 58) * 1.48))))
+    return transformed, ImageChops.multiply(highlights, transformed.getchannel("A"))
+
+
+def mascot_layer(phase: float) -> Image.Image:
+    motion = mascot_motion(phase)
+    pose_index = math.floor(phase * MASCOT_POSE_COUNT) % MASCOT_POSE_COUNT
+    transformed, highlights = mascot_pose(pose_index)
+
+    x = round(MASCOT_CENTER[0] + motion["sway_x"] - transformed.width / 2)
+    y = round(MASCOT_CENTER[1] + motion["bob_y"] - transformed.height / 2)
 
     layer = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
-    position = (680, -55)
+    position = (x, y)
+
+    # Restrict the spectral trail to the source's bright character/neon details,
+    # avoiding a tinted duplicate of the square artwork's dark background.
+    speed = math.hypot(motion["velocity_x"], motion["velocity_y"])
+    speed_ratio = min(1.0, speed / 15.0)
+    if speed:
+        trail_x = -motion["velocity_x"] / speed
+        trail_y = -motion["velocity_y"] / speed
+    else:
+        trail_x = trail_y = 0.0
+    trail_distance = 2.2 + 2.0 * speed_ratio
+
+    cyan = tinted_afterimage(
+        transformed,
+        highlights,
+        rgb("#7dcfff"),
+        0.105,
+    )
+    pink = tinted_afterimage(
+        transformed,
+        highlights,
+        rgb("#f7768e"),
+        0.078,
+    )
+    cyan_position = (
+        round(x + trail_x * trail_distance),
+        round(y + trail_y * trail_distance),
+    )
+    pink_position = (
+        round(x - trail_x * trail_distance * 0.58),
+        round(y - trail_y * trail_distance * 0.58),
+    )
+    cyan_bloom = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    cyan_bloom.alpha_composite(cyan, cyan_position)
+    layer.alpha_composite(cyan_bloom.filter(ImageFilter.GaussianBlur(6)))
+    layer.alpha_composite(cyan, cyan_position)
+    pink_bloom = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    pink_bloom.alpha_composite(pink, pink_position)
+    layer.alpha_composite(pink_bloom.filter(ImageFilter.GaussianBlur(5)))
+    layer.alpha_composite(pink, pink_position)
+
     glow = Image.new("RGBA", layer.size, (0, 0, 0, 0))
-    glow.paste(source, position, source)
+    glow.alpha_composite(transformed, position)
     glow_alpha = glow.getchannel("A").point(lambda value: round(value * 0.34))
     glow.putalpha(glow_alpha)
     layer.alpha_composite(glow.filter(ImageFilter.GaussianBlur(18)))
-    layer.alpha_composite(source, position)
+    layer.alpha_composite(transformed, position)
 
+    # The fade remains fixed so the dancing art never reduces left-copy contrast.
     fade = Image.new("RGBA", layer.size, (0, 0, 0, 0))
     fade_draw = ImageDraw.Draw(fade)
     for x in range(670, 890):
@@ -137,7 +236,7 @@ def mascot_layer() -> Image.Image:
 
 
 BASE = gradient_background()
-MASCOT = mascot_layer()
+MASCOT_SOURCE = prepare_mascot_source()
 
 
 def render_cameo() -> None:
@@ -192,7 +291,7 @@ def draw_border(image: Image.Image, phase: float) -> None:
 def draw_frame(frame_index: int) -> Image.Image:
     phase = frame_index / FRAME_COUNT
     image = BASE.copy()
-    image.alpha_composite(MASCOT)
+    image.alpha_composite(mascot_layer(phase))
     draw = ImageDraw.Draw(image)
 
     # Canticle prompt-square lockup.
@@ -251,6 +350,29 @@ def draw_frame(frame_index: int) -> Image.Image:
     return image.convert("RGB")
 
 
+def ffmpeg_version() -> str:
+    first_line = subprocess.run(
+        ["ffmpeg", "-version"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()[0]
+    return first_line.removeprefix("ffmpeg version ").split(" Copyright", 1)[0]
+
+
+def gif_timing(path: Path) -> tuple[list[int], int]:
+    durations: list[int] = []
+    with Image.open(path) as animation:
+        loop_count = int(animation.info.get("loop", 0))
+        for index in range(animation.n_frames):
+            animation.seek(index)
+            duration = animation.info.get("duration")
+            if not isinstance(duration, int):
+                raise RuntimeError(f"missing encoded GIF duration on frame {index}")
+            durations.append(duration)
+    return durations, loop_count
+
+
 def main() -> int:
     if not GHOST_SOURCE.exists():
         raise SystemExit(f"missing approved brand source: {GHOST_SOURCE.relative_to(ROOT)}")
@@ -266,23 +388,48 @@ def main() -> int:
                 "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
                 "-framerate", str(FRAME_RATE), "-i", str(frame_dir / "frame-%03d.png"),
                 "-filter_complex",
-                "[0:v]split[a][b];[a]palettegen=max_colors=192:stats_mode=diff[p];"
-                "[b][p]paletteuse=dither=bayer:bayer_scale=3:diff_mode=rectangle",
+                f"[0:v]split[a][b];[a]palettegen=max_colors={GIF_COLORS}:stats_mode=diff[p];"
+                "[b][p]paletteuse=dither=none:diff_mode=rectangle",
                 "-loop", "0", str(GIF_OUT),
             ],
             check=True,
         )
     render_cameo()
 
+    encoded_durations, loop_count = gif_timing(GIF_OUT)
+    duration_counts = Counter(encoded_durations)
+    generated_at = datetime.now(timezone.utc)
+
     metadata = {
         "asset": GIF_OUT.name,
         "approval_state": "approved_for_profile",
         "brand": "Canticle Research",
         "composer": "tools/generate_canticle_profile_assets.py",
-        "generated_date": "2026-08-18",
+        "generated_date": generated_at.date().isoformat(),
+        "generated_at_utc": generated_at.isoformat(timespec="seconds"),
         "dimensions": [WIDTH, HEIGHT],
-        "frame_count": FRAME_COUNT,
-        "frame_duration_ms": FRAME_DURATION_MS,
+        "frame_count": len(encoded_durations),
+        "requested_frame_rate_fps": FRAME_RATE,
+        "requested_frame_period_ms": {"numerator": 1000, "denominator": FRAME_RATE},
+        "encoded_frame_duration_counts_ms": {
+            str(duration): duration_counts[duration] for duration in sorted(duration_counts)
+        },
+        "encoded_total_duration_ms": sum(encoded_durations),
+        "gif_loop_count": loop_count,
+        "motion": {
+            "description": "The exact approved girl-plus-four-spirit ensemble floats as one seamless dance: a slow side-to-side sway, two gentle vertical lifts, subtle off-axis roll, and a tiny breathing scale change over four seconds. Restrained cyan and pink highlight afterimages follow the instantaneous direction and speed of travel; fixed left-side fading preserves copy contrast.",
+            "sampling": "48 periodic position/trail samples at phase frame_index / 48, with 24 reusable bicubic rotation/scale poses; the implicit frame 47 to frame 0 transition closes the loop without a duplicated endpoint.",
+            "sway_x_pixels": "9*sin(t) + 2*sin(2t)",
+            "bob_y_pixels": "-5*(1-cos(2t)) + 1.3*sin(t)",
+            "rotation_degrees": "1.2*sin(t) + 0.25*sin(2t)",
+            "scale": "1 + 0.012*sin(2t)",
+            "character_source_edit": "none; the complete source ensemble is transformed without repainting or regeneration",
+            "static_layout": "all typography, labels, chips, copy positions, and safe-area geometry are unchanged",
+        },
+        "pillow_version": PILLOW_VERSION,
+        "ffmpeg_version": ffmpeg_version(),
+        "gif_palette_max_colors": GIF_COLORS,
+        "gif_dither": "none",
         "palette": PALETTE,
         "source": GHOST_SOURCE.name,
         "source_sha256": sha256(GHOST_SOURCE),
