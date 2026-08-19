@@ -33,7 +33,11 @@ status    online / research in progress
 I build inspectable AI systems and the research infrastructure around them. Canticle starts with **AI research and safety**, follows the evidence into **open-source AI and emergence**, and turns the useful parts into memory, agent, evaluation, and developer systems.
 
 <div align="center">
-  <img src="./assets/cyber-divider.svg?v=canticle-anime-1" alt="" width="100%">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+  </picture>
 </div>
 
 ## `// research surface`
@@ -52,7 +56,11 @@ I build inspectable AI systems and the research infrastructure around them. Cant
 > The interesting part is not only what an AI system can do. It is whether we can trace why it did it, reproduce the result, and improve it without losing the evidence.
 
 <div align="center">
-  <img src="./assets/cyber-divider.svg?v=canticle-anime-1" alt="" width="100%">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+  </picture>
 </div>
 
 ## `// active systems`
@@ -101,7 +109,11 @@ Emergent behavior, memory-guided agents, fine-tuning, embodied/spatial systems, 
 </table>
 
 <div align="center">
-  <img src="./assets/cyber-divider.svg?v=canticle-anime-1" alt="" width="100%">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+  </picture>
 </div>
 
 ## `// operator stack`
@@ -117,7 +129,11 @@ question → smallest useful experiment → evidence
 ```
 
 <div align="center">
-  <img src="./assets/cyber-divider.svg?v=canticle-anime-1" alt="" width="100%">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+  </picture>
 </div>
 
 ## `// support the work`
