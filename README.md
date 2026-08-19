@@ -1,9 +1,9 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/canticle-profile-hero.png?v=ghost-square-3">
-  <source type="image/gif" srcset="./assets/canticle-profile-hero.gif?v=ghost-square-3">
-  <img src="./assets/canticle-profile-hero.png?v=ghost-square-3" alt="BlackhatShiftey with Ghost—the anime girl and her cute cat-like spirit forms—in the Canticle RGB research style" width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/canticle-profile-hero.png?v=ghost-dance-1">
+  <source type="image/gif" srcset="./assets/canticle-profile-hero.gif?v=ghost-dance-1">
+  <img src="./assets/canticle-profile-hero.png?v=ghost-dance-1" alt="BlackhatShiftey with Ghost—the anime girl and her cute cat-like spirit forms—in the Canticle RGB research style" width="100%">
 </picture>
 
 <br>
@@ -34,9 +34,9 @@ I build inspectable AI systems and the research infrastructure around them. Cant
 
 <div align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
-    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
-    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-2">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-2">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-2" alt="" width="100%">
   </picture>
 </div>
 
@@ -57,9 +57,9 @@ I build inspectable AI systems and the research infrastructure around them. Cant
 
 <div align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
-    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
-    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-2">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-2">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-2" alt="" width="100%">
   </picture>
 </div>
 
@@ -110,9 +110,9 @@ Emergent behavior, memory-guided agents, fine-tuning, embodied/spatial systems, 
 
 <div align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
-    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
-    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-2">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-2">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-2" alt="" width="100%">
   </picture>
 </div>
 
@@ -130,9 +130,9 @@ question → smallest useful experiment → evidence
 
 <div align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-1">
-    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-1">
-    <img src="./assets/cyber-divider.png?v=rgb-cubes-1" alt="" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/cyber-divider.png?v=rgb-cubes-2">
+    <source type="image/gif" srcset="./assets/cyber-divider.gif?v=rgb-cubes-2">
+    <img src="./assets/cyber-divider.png?v=rgb-cubes-2" alt="" width="100%">
   </picture>
 </div>
 

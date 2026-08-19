@@ -2,17 +2,6 @@
   <title id="title">Canticle spectral cube relay</title>
   <desc id="desc">A static reduced-motion view of six glowing RGB data cubes on a terminal signal line.</desc>
   <defs>
-    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
-      <stop stop-color="#ff6090"/>
-      <stop offset=".24" stop-color="#e478d0"/>
-      <stop offset=".48" stop-color="#c4a7e7"/>
-      <stop offset=".72" stop-color="#7dcfff"/>
-      <stop offset="1" stop-color="#73daca"/>
-    </linearGradient>
-    <filter id="lineGlow" x="-10%" y="-500%" width="120%" height="1100%">
-      <feGaussianBlur stdDeviation="2.4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <filter id="cubeGlow" x="-90%" y="-90%" width="280%" height="280%">
       <feGaussianBlur stdDeviation="2.8" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -20,36 +9,35 @@
   </defs>
 
   <path d="M22 36H978" stroke="#3b3d57"/>
-  <path d="M22 36H978" stroke="url(#spectrum)" stroke-width="2" stroke-dasharray="92 20 36 808" opacity=".72" filter="url(#lineGlow)"/>
   <path d="M22 29V43M22 36H36M978 29V43M964 36H978" fill="none" stroke="#565f89"/>
 
-  <g stroke-linejoin="round" stroke-width=".8" filter="url(#cubeGlow)">
-    <g transform="rotate(-10 418 36)">
+  <g stroke-linejoin="round" stroke-width=".8">
+    <g transform="rotate(-10 418 36)" filter="url(#cubeGlow)">
       <path d="M418 23 425 27 418 31 411 27Z" fill="#ffb2c8" stroke="#ffd0dd"/>
       <path d="M411 27 418 31 418 41 411 37Z" fill="#d84f79" stroke="#ff7ba2"/>
       <path d="M425 27 418 31 418 41 425 37Z" fill="#8f3151" stroke="#ff6090"/>
     </g>
-    <g transform="rotate(8 451 35)">
+    <g transform="rotate(8 451 35)" filter="url(#cubeGlow)">
       <path d="M451 20 460 25 451 30 442 25Z" fill="#f6afe7" stroke="#ffd0f4"/>
       <path d="M442 25 451 30 451 43 442 38Z" fill="#c55eaf" stroke="#ee8bdb"/>
       <path d="M460 25 451 30 451 43 460 38Z" fill="#813d79" stroke="#e478d0"/>
     </g>
-    <g transform="rotate(-6 485 35)">
+    <g transform="rotate(-6 485 35)" filter="url(#cubeGlow)">
       <path d="M485 17 496 23 485 29 474 23Z" fill="#eadcff" stroke="#f5ecff"/>
       <path d="M474 23 485 29 485 46 474 40Z" fill="#9a79bf" stroke="#cfb2ed"/>
       <path d="M496 23 485 29 485 46 496 40Z" fill="#62517f" stroke="#c4a7e7"/>
     </g>
-    <g transform="rotate(7 519 35)">
+    <g transform="rotate(7 519 35)" filter="url(#cubeGlow)">
       <path d="M519 17 530 23 519 29 508 23Z" fill="#c8edff" stroke="#ecf9ff"/>
       <path d="M508 23 519 29 519 46 508 40Z" fill="#579ec8" stroke="#8dd8ff"/>
       <path d="M530 23 519 29 519 46 530 40Z" fill="#39677f" stroke="#7dcfff"/>
     </g>
-    <g transform="rotate(-8 553 35)">
+    <g transform="rotate(-8 553 35)" filter="url(#cubeGlow)">
       <path d="M553 20 562 25 553 30 544 25Z" fill="#c4f3eb" stroke="#e8fffb"/>
       <path d="M544 25 553 30 553 43 544 38Z" fill="#4fa99c" stroke="#84e5d7"/>
       <path d="M562 25 553 30 553 43 562 38Z" fill="#347267" stroke="#73daca"/>
     </g>
-    <g transform="rotate(10 586 36)">
+    <g transform="rotate(10 586 36)" filter="url(#cubeGlow)">
       <path d="M586 23 593 27 586 31 579 27Z" fill="#ffe0a0" stroke="#fff0c9"/>
       <path d="M579 27 586 31 586 41 579 37Z" fill="#b8893e" stroke="#edbd69"/>
       <path d="M593 27 586 31 586 41 593 37Z" fill="#765a2d" stroke="#e0af68"/>

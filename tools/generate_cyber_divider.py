@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from collections import Counter
+from datetime import date
 import hashlib
 import json
 import math
@@ -28,7 +30,6 @@ HEIGHT = 72
 LINE_Y = 36
 FRAME_COUNT = 48
 FRAME_RATE = 12
-FRAME_DURATION_MS = round(1000 / FRAME_RATE)
 LOOP_DURATION_SECONDS = FRAME_COUNT / FRAME_RATE
 CAMERA_DISTANCE = 8.0
 CUBE_X = (415, 449, 483, 517, 551, 585)
@@ -122,26 +123,14 @@ def shade(color: tuple[int, int, int], amount: float) -> tuple[int, int, int]:
     return tuple(round(clamp(channel * amount, 0, 255)) for channel in color)
 
 
-def draw_signal_line(image: Image.Image, phase: float) -> None:
-    glow = Image.new("RGBA", image.size, (0, 0, 0, 0))
-    glow_draw = ImageDraw.Draw(glow)
-    glow_draw.line((22, LINE_Y, 978, LINE_Y), fill=(59, 61, 87, 190), width=1)
-
-    span = 956.0
-    for x in range(22, 979, 4):
-        x_phase = (x - 22) / span
-        distance = abs(x_phase - phase)
-        distance = min(distance, 1.0 - distance)
-        intensity = math.exp(-((distance / 0.075) ** 2))
-        if intensity < 0.015:
-            continue
-        color = spectrum(x_phase + phase * 0.12)
-        alpha = round(45 + 210 * intensity)
-        glow_draw.line((x, LINE_Y, min(978, x + 4), LINE_Y), fill=(*color, alpha), width=2)
-
-    blurred = glow.filter(ImageFilter.GaussianBlur(2.4))
-    image.alpha_composite(blurred)
-    image.alpha_composite(glow)
+def draw_signal_line(image: Image.Image) -> None:
+    """Draw a quiet carrier so the cube glows own the RGB motion."""
+    carrier = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    carrier_draw = ImageDraw.Draw(carrier)
+    carrier_draw.line((22, LINE_Y, 978, LINE_Y), fill=(59, 61, 87, 205), width=1)
+    carrier_draw.line((36, LINE_Y, 964, LINE_Y), fill=(86, 95, 137, 54), width=2)
+    image.alpha_composite(carrier.filter(ImageFilter.GaussianBlur(1.6)))
+    image.alpha_composite(carrier)
     draw = ImageDraw.Draw(image)
     draw.line((22, 29, 22, 43), fill=(86, 95, 137, 230), width=1)
     draw.line((22, LINE_Y, 36, LINE_Y), fill=(86, 95, 137, 230), width=1)
@@ -173,15 +162,35 @@ def draw_cube(image: Image.Image, index: int, phase: float) -> None:
     center_y = LINE_Y - 4.6 * math.sin(math.pi * progress) * bump
     base_color = rgb(CUBE_COLORS[index])
 
-    aura = Image.new("RGBA", image.size, (0, 0, 0, 0))
-    aura_draw = ImageDraw.Draw(aura)
-    radius_x = round(scale * (1.35 + 0.35 * bump))
-    radius_y = round(scale * (1.10 + 0.30 * bump))
-    aura_draw.ellipse(
-        (center_x - radius_x, center_y - radius_y, center_x + radius_x, center_y + radius_y),
-        fill=(*base_color, round(38 + 92 * bump)),
+    outer_glow = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    outer_draw = ImageDraw.Draw(outer_glow)
+    outer_radius_x = round(scale * (1.85 + 0.45 * bump))
+    outer_radius_y = round(scale * (1.55 + 0.35 * bump))
+    outer_draw.ellipse(
+        (
+            center_x - outer_radius_x,
+            center_y - outer_radius_y,
+            center_x + outer_radius_x,
+            center_y + outer_radius_y,
+        ),
+        fill=(*base_color, round(58 + 142 * bump)),
     )
-    image.alpha_composite(aura.filter(ImageFilter.GaussianBlur(5.0)))
+    image.alpha_composite(outer_glow.filter(ImageFilter.GaussianBlur(7.0)))
+
+    inner_glow = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    inner_draw = ImageDraw.Draw(inner_glow)
+    inner_radius_x = round(scale * (1.25 + 0.25 * bump))
+    inner_radius_y = round(scale * (1.05 + 0.20 * bump))
+    inner_draw.ellipse(
+        (
+            center_x - inner_radius_x,
+            center_y - inner_radius_y,
+            center_x + inner_radius_x,
+            center_y + inner_radius_y,
+        ),
+        fill=(*base_color, round(98 + 132 * bump)),
+    )
+    image.alpha_composite(inner_glow.filter(ImageFilter.GaussianBlur(2.6)))
 
     light = normalize((-0.45, 0.85, 0.65))
     visible_faces: list[tuple[float, list[tuple[float, float]], tuple[int, int, int], tuple[int, int, int]]] = []
@@ -221,7 +230,7 @@ def draw_cube(image: Image.Image, index: int, phase: float) -> None:
 def draw_frame(frame_index: int) -> Image.Image:
     phase = frame_index / FRAME_COUNT
     image = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
-    draw_signal_line(image, phase)
+    draw_signal_line(image)
     for index in range(len(CUBE_X)):
         draw_cube(image, index, phase)
 
@@ -295,6 +304,15 @@ def validate_outputs() -> None:
             raise RuntimeError(f"unexpected PNG size: {poster.size}")
 
 
+def encoded_gif_durations() -> list[int]:
+    durations: list[int] = []
+    with Image.open(GIF_OUT) as gif:
+        for frame_index in range(gif.n_frames):
+            gif.seek(frame_index)
+            durations.append(int(gif.info.get("duration", 0)))
+    return durations
+
+
 def main() -> int:
     ASSETS.mkdir(exist_ok=True)
     frames = [draw_frame(index) for index in range(FRAME_COUNT)]
@@ -302,19 +320,25 @@ def main() -> int:
     frames[18].save(PNG_OUT, optimize=True)
     render_contact_sheet(frames)
     validate_outputs()
+    durations = encoded_gif_durations()
+    duration_counts = Counter(durations)
 
     metadata = {
         "asset": GIF_OUT.name,
-        "approval_state": "draft_pending_operator_review",
+        "approval_state": "approved_for_profile",
         "brand": "Canticle Research",
         "composer": "tools/generate_cyber_divider.py",
-        "generated_date": "2026-08-18",
+        "generated_date": date.today().isoformat(),
         "dimensions": [WIDTH, HEIGHT],
         "frame_count": FRAME_COUNT,
         "frame_rate": FRAME_RATE,
-        "frame_duration_ms": FRAME_DURATION_MS,
+        "nominal_frame_duration_ms": round(1000 / FRAME_RATE, 3),
+        "encoded_frame_duration_counts_ms": {str(value): count for value, count in sorted(duration_counts.items())},
+        "encoded_total_duration_ms": sum(durations),
         "loop_duration_seconds": LOOP_DURATION_SECONDS,
-        "motion": "staggered relay; each cube grows, bobs, and completes a smooth off-axis X/Y tumble before settling",
+        "motion": "staggered relay; each cube grows, bobs, intensifies its own color glow, and completes a smooth off-axis X/Y tumble before settling",
+        "carrier_line_motion": "none; static neutral terminal carrier",
+        "individual_cube_glow": True,
         "renderer": f"Pillow {PIL.__version__} projected 3D geometry",
         "encoder": ffmpeg_version(),
         "transparent_background": True,
