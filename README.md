@@ -1,9 +1,9 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/canticle-profile-hero.png?v=ghost-dance-1">
-  <source type="image/gif" srcset="./assets/canticle-profile-hero.gif?v=ghost-dance-1">
-  <img src="./assets/canticle-profile-hero.png?v=ghost-dance-1" alt="BlackhatShiftey with Ghost—the anime girl and her cute cat-like spirit forms—in the Canticle RGB research style" width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/canticle-profile-hero.png?v=ghost-articulated-1">
+  <source type="image/gif" srcset="./assets/canticle-profile-hero.gif?v=ghost-articulated-1">
+  <img src="./assets/canticle-profile-hero.png?v=ghost-articulated-1" alt="BlackhatShiftey with Ghost—the anime girl and her cute cat-like spirit forms—in the Canticle RGB research style" width="100%">
 </picture>
 
 <br>

@@ -83,7 +83,7 @@ def crop_to_sentinel(path: Path) -> None:
         image.crop((0, 0, image.width, bottom)).save(path, optimize=True)
 
 
-def render(name: str, width: int, height: int) -> Path:
+def render(name: str, width: int, height: int, *, reduced_motion: bool = False) -> Path:
     output = PREVIEW / f"profile-{name}.png"
     command = [
         "/usr/bin/google-chrome",
@@ -98,8 +98,10 @@ def render(name: str, width: int, height: int) -> Path:
         "--virtual-time-budget=1800",
         f"--window-size={width},{height}",
         f"--screenshot={output}",
-        HTML_OUT.resolve().as_uri(),
     ]
+    if reduced_motion:
+        command.append("--force-prefers-reduced-motion")
+    command.append(HTML_OUT.resolve().as_uri())
     subprocess.run(command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     crop_to_sentinel(output)
     return output
@@ -110,8 +112,11 @@ def main() -> int:
     HTML_OUT.write_text(build_html(), encoding="utf-8")
     desktop = render("desktop", 1280, 5200)
     mobile = render("mobile", 430, 7600)
+    # A near-document viewport keeps Chrome from leaving static offscreen tiles unpainted.
+    mobile_reduced = render("mobile-reduced-motion", 430, 4200, reduced_motion=True)
     print(f"rendered {desktop.relative_to(ROOT)} {Image.open(desktop).size}")
     print(f"rendered {mobile.relative_to(ROOT)} {Image.open(mobile).size}")
+    print(f"rendered {mobile_reduced.relative_to(ROOT)} {Image.open(mobile_reduced).size}")
     return 0
 
 
