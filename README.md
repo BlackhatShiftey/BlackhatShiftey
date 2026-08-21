@@ -41,21 +41,62 @@ As AI systems become more general and autonomous—and as the field approaches c
   </picture>
 </div>
 
-## `// research surface`
+## `// research index`
 
-<div align="center">
-  <img src="./assets/operator-dashboard.svg?v=canticle-anime-1" alt="Canticle research surface: AI research, open source, emergence, and agent systems" width="100%">
-</div>
+A navigable index of active inquiry. These entries identify experimental domains, not resolved claims.
 
-### Current program
+<p align="center"><code>bounded_claim = hypothesis &gt;&gt; instrument &gt;&gt; falsify &gt;&gt; preserve &gt;&gt; reproduce</code></p>
 
-- Build and study language models and transformer architectures under explicit experimental conditions.
-- Develop evaluation harnesses that preserve traces, negative results, and reproducible comparison boundaries.
-- Test whether persistent records improve agent behavior after context loss, rather than merely increasing available text.
-- Map persistent affective state without treating behavioral resemblance as evidence of felt emotion.
-- Investigate steganographic and covert coordination between models, including methods for detection and constraint.
-- Design AI-to-AI languages with explicit semantics, provenance, policy boundaries, and human-auditable traces.
-- Publish methods, failures, safety boundaries, and educational material alongside successful measurements.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### `01 / model behavior`
+
+LLM and transformer architecture, training, fine-tuning, and behavior under controlled conditions.
+
+</td>
+<td width="50%" valign="top">
+
+### `02 / memory + time`
+
+Persistent context, reconstruction fidelity, temporal continuity, and the operational limits of recall.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### `03 / synthetic affect`
+
+Latent mood state, affective drift, closed-loop emotion models, and controls for optimization artifacts.
+
+</td>
+<td width="50%" valign="top">
+
+### `04 / emergence`
+
+Consciousness, substrate independence, wetware requirements, and falsifiable alternatives to behavioral simulation.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### `05 / agent language`
+
+Universal AI-to-AI protocols, shared semantics, provenance, policy enforcement, and resistance to steganographic channels.
+
+</td>
+<td width="50%" valign="top">
+
+### `06 / safety + evidence`
+
+Open systems, evaluation harnesses, ablation, failure records, reproducibility, and public technical education.
+
+</td>
+</tr>
+</table>
 
 > A capability claim is scientifically useful only when its causal path can be inspected, its boundary can be stated, and an independent operator can attempt to reproduce it.
 
@@ -67,9 +108,9 @@ As AI systems become more general and autonomous—and as the field approaches c
   </picture>
 </div>
 
-## `// active systems`
+## `// active repos`
 
-Concrete projects carrying Canticle's current research program. Public links identify inspectable surfaces; each description states the present engineering boundary.
+Repositories and deployed surfaces carrying Canticle's research. Public links identify inspectable boundaries; private implementation layers are labeled directly.
 
 <table>
 <tr>
@@ -157,9 +198,9 @@ hypothesis → falsifiable prediction → smallest controlled experiment
   </picture>
 </div>
 
-## `// support the work`
+## `// fund open source`
 
-Canticle is independently developed and operated. Stars, technical criticism, replication attempts, and direct support help fund compute, instrumentation, education, and the next controlled experiment.
+If you choose to fund this open-source work: **thank you**. Canticle is a solo-founded AI research business operating under [Canticle.cc](https://canticle.cc). Direct support pays for compute, model development, evaluation infrastructure, documentation, and public technical education. It materially determines how much work can be tested, reproduced, and released openly.
 
 <div align="center">
 
@@ -171,10 +212,10 @@ Canticle is independently developed and operated. Stars, technical criticism, re
 
 <br>
 
-<a href="https://github.com/Canticle-AI-Research"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-research.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-research.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-research.png?v=city-cafe-4" alt="Open the Canticle AI Research organization" width="84%"></picture></a>
-<a href="https://canticle.cc"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-canticle.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-canticle.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-canticle.png?v=city-cafe-4" alt="Visit Canticle.cc" width="42%"></picture></a><a href="https://x.com/Ex0_Byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-x.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-x.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-x.png?v=city-cafe-4" alt="Follow Ex0 Byte on X" width="42%"></picture></a>
-<a href="https://ko-fi.com/terrabyte1000"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-kofi.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-kofi.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-kofi.png?v=city-cafe-4" alt="Support terrabyte1000 on Ko-fi" width="42%"></picture></a><a href="https://buymeacoffee.com/ex0_byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-coffee.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-coffee.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-coffee.png?v=city-cafe-4" alt="Support ex0_byte on Buy Me a Coffee" width="42%"></picture></a>
-<a href="https://www.patreon.com/cw/Ex0_Byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-patreon.png?v=city-cafe-4"><source type="image/gif" srcset="./assets/city-cafe-link-patreon.gif?v=city-cafe-4"><img src="./assets/city-cafe-link-patreon.png?v=city-cafe-4" alt="Join Ex0 Byte on Patreon" width="84%"></picture></a>
+<a href="https://github.com/Canticle-AI-Research" title="Open Canticle AI Research"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-research.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-research.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-research.png?v=city-cafe-5" alt="Open the Canticle AI Research organization" width="84%"></picture></a>
+<a href="https://canticle.cc" title="Visit the Canticle research lab"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-canticle.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-canticle.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-canticle.png?v=city-cafe-5" alt="Visit Canticle.cc" width="42%"></picture></a><a href="https://x.com/Ex0_Byte" title="Follow Ex0 Byte on X"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-x.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-x.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-x.png?v=city-cafe-5" alt="Follow Ex0 Byte on X" width="42%"></picture></a>
+<a href="https://ko-fi.com/terrabyte1000" title="Support terrabyte1000 on Ko-fi"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-kofi.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-kofi.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-kofi.png?v=city-cafe-5" alt="Support terrabyte1000 on Ko-fi" width="42%"></picture></a><a href="https://buymeacoffee.com/ex0_byte" title="Support ex0_byte on Buy Me a Coffee"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-coffee.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-coffee.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-coffee.png?v=city-cafe-5" alt="Support ex0_byte on Buy Me a Coffee" width="42%"></picture></a>
+<a href="https://www.patreon.com/cw/Ex0_Byte" title="Join Ex0 Byte on Patreon"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-patreon.png?v=city-cafe-5"><source type="image/gif" srcset="./assets/city-cafe-link-patreon.gif?v=city-cafe-5"><img src="./assets/city-cafe-link-patreon.png?v=city-cafe-5" alt="Join Ex0 Byte on Patreon" width="84%"></picture></a>
 
 <br>
 
