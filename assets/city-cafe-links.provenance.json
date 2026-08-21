@@ -1,21 +1,26 @@
 {
   "approval": {
-    "state": "approved for BlackhatShiftey GitHub profile publication",
-    "approved_at": "2026-08-20",
-    "scope": "profile hero and animated destination tiles only"
+    "state": "unapproved correction preview",
+    "created_at": "2026-08-20",
+    "scope": "restore prior profile banner, place the waving cameo before the links, and compact six cafe tiles at 2x with official platform marks"
   },
   "composition": {
-    "hero_position": "top",
-    "hero_dimensions": [600, 392],
-    "panorama_dimensions": [600, 736],
+    "profile_banner": "canticle-profile-hero.{gif,png}",
+    "profile_banner_dimensions": [1200, 440],
+    "waving_cameo_position": "bottom support section",
+    "waving_cameo_dimensions": [512, 512],
+    "waving_cameo_treatment": "direct square waving footage with no bars, inset frame, border, or baked text",
+    "link_grid_position": "below the waving cameo in the bottom support section",
+    "link_grid_display_width": "84 percent for full rows and 42 percent for paired rows",
+    "panorama_dimensions": [1200, 1120],
     "scene_repetitions_in_link_grid": 1,
     "crop_partition": {
-      "research": [0, 0, 600, 184],
-      "canticle": [0, 184, 300, 368],
-      "x": [300, 184, 600, 368],
-      "kofi": [0, 368, 300, 552],
-      "coffee": [300, 368, 600, 552],
-      "patreon": [0, 552, 600, 736]
+      "research": [0, 0, 1200, 280],
+      "canticle": [0, 280, 600, 560],
+      "x": [600, 280, 1200, 560],
+      "kofi": [0, 560, 600, 840],
+      "coffee": [600, 560, 1200, 840],
+      "patreon": [0, 840, 1200, 1120]
     },
     "overlap_pixels": 0,
     "uncovered_pixels": 0
@@ -23,41 +28,48 @@
   "animation": {
     "source_sequence_frames": 36,
     "tile_gif_frames": 36,
-    "hero_gif_encoded_frames": 35,
+    "cameo_gif_frames": 36,
     "frame_duration_ms": 84,
     "loop": "infinite",
-    "motion": "real waving-host footage, breathing logos, bobbing Ghost-bunny patrons, steam and particles",
-    "fixed_elements": "destination labels, route text, tile geometry and click boundaries"
+    "motion": "subtle uniform logo pulse, bobbing Ghost-bunny patrons, steam, particles, and direct operator-supplied waving footage",
+    "fixed_elements": "destination labels, route text, tile geometry, official mark proportions, and click boundaries"
   },
   "sources": {
     "waving_host_video_sha256": "84cbd6313397ccccc576c2c8829d2d98e3e48c1804bf4e6a1f18f84c7bce15f8",
     "cafe_background_sha256": "781582d811d80adf795149d38dff91ef292ff96cdb8ea586d76bc38ef3e04b75",
     "calm_bunny_template_sha256": "d7c0ebaf65248dcd1f3f56cd9c9aa52e1ef4899a6d1c4ce73c1f2cd70ad71a04",
-    "happy_bunny_template_sha256": "85f650f181b89d4ee1973091bb7c48684647205d179b1c3976caedc019835faf"
+    "happy_bunny_template_sha256": "85f650f181b89d4ee1973091bb7c48684647205d179b1c3976caedc019835faf",
+    "brand_library": "Canticle.cc img/brand in isolated agent/official-platform-assets worktree",
+    "official_brand_pages": {
+      "x": "https://about.x.com/en/who-we-are/brand-toolkit",
+      "kofi": "https://more.ko-fi.com/brand-assets",
+      "buy_me_a_coffee": "https://buymeacoffee.com/brand",
+      "patreon": "https://www.patreon.com/brand"
+    }
   },
   "tools": {
-    "blender": "5.2.0 LTS EEVEE composition guide",
-    "comfyui": "0.33.0 with local AnimagineXL 3.1 background repaint",
-    "krita": "5.3.3 layered OpenRaster master and pixel-equal CLI export",
-    "pillow": "deterministic text, logo, crop and animation composition",
-    "ffmpeg": "6.1.1 source decode and review encodes",
-    "opentoonz": "1.8.0-compatible numbered levels prepared; no OpenToonz-rendered output",
-    "davinci_resolve": "21.0.4 headless launch verified; no Resolve conform or render"
+    "blender": "5.2.0 LTS EEVEE composition guide from the approved cafe source",
+    "comfyui": "0.33.0 with local AnimagineXL 3.1 background source",
+    "krita": "5.3.3 SVG export for the canonical Canticle lockup",
+    "pillow": "2x deterministic label, official-logo, crop, cameo and animation composition",
+    "ffmpeg": "6.1.1 source decode, AVIF working conversion and review encoding",
+    "opentoonz": "1.8.0-compatible levels available from the source draft; no OpenToonz-rendered output",
+    "davinci_resolve": "21.0.4 local launch previously verified; no Resolve conform or render"
   },
   "outputs": {
-    "city-cafe-waving-hero.gif": {"dimensions": [600, 392], "sha256": "e234a17692ce3539e12ab06f969375f930b57a72ae84564995d65ed21fba7acd"},
-    "city-cafe-waving-hero.png": {"dimensions": [600, 392], "sha256": "69ad2011011e9186fe4f22c3f27f8f952b8b6779a666a5b1e44e2380c49cad39"},
-    "city-cafe-link-research.gif": {"dimensions": [600, 184], "sha256": "689a15a5c57530f3342f80c192e356dd33c319a273a7c4ac54cde899af70716c"},
-    "city-cafe-link-research.png": {"dimensions": [600, 184], "sha256": "a91c73f95be88fbdc523b4dc588d7d25bb1cd82b154190a6b7b500a4a6cbe66d"},
-    "city-cafe-link-canticle.gif": {"dimensions": [300, 184], "sha256": "6ed0a1c617b3d20911cab444411a9c16a61f7a9271ec8030762dab09894f70a0"},
-    "city-cafe-link-canticle.png": {"dimensions": [300, 184], "sha256": "1984ec0387693afa922ed8f1301f521544b51651a36ed13ad61fd9c4b3e2eba9"},
-    "city-cafe-link-x.gif": {"dimensions": [300, 184], "sha256": "485ecb7cab106decbd35a0ad710c1c193c0b2116863ae8a81e0b8c26db70f8d1"},
-    "city-cafe-link-x.png": {"dimensions": [300, 184], "sha256": "9903c570c8c5de58deeb7b1e03aa3d4eb42efdf0061f8610124011ce6d261091"},
-    "city-cafe-link-kofi.gif": {"dimensions": [300, 184], "sha256": "2016c5b263c575222dd1e3dc2b1f557b6acdd1019e3504c65ead0917c4c4e605"},
-    "city-cafe-link-kofi.png": {"dimensions": [300, 184], "sha256": "0eb87655d6354a007d47377626168136d3070fc3312e98ed05003217370a0792"},
-    "city-cafe-link-coffee.gif": {"dimensions": [300, 184], "sha256": "9c53026f7d38cf348dbfec16e5b5ddadf5ede437eb899468f9d1747c33e3c918"},
-    "city-cafe-link-coffee.png": {"dimensions": [300, 184], "sha256": "9c2e6fed3a136a6369c662f9cd8b13f9b73d53a2eb649ed9fb26717eea571f1f"},
-    "city-cafe-link-patreon.gif": {"dimensions": [600, 184], "sha256": "5bda2c1bab57c286f59f664ce66f17481b914859bca502bba2ec7cfd2f2bcc7c"},
-    "city-cafe-link-patreon.png": {"dimensions": [600, 184], "sha256": "018132080dc514ece65035d99b97300e2121657fd8c6e1c950fce148e35df92e"}
+    "city-cafe-waving-cameo.gif": {"dimensions": [512, 512], "sha256": "992eca8294994ad976183a9bacd04a8da4dee61adc0f9a97214e4f926e6ca036"},
+    "city-cafe-waving-cameo.png": {"dimensions": [512, 512], "sha256": "f30c7c3bd13ef00aad338639ed1df6ecc275aa6d79c31a1f2e3c3870185adb09"},
+    "city-cafe-link-research.gif": {"dimensions": [1200, 280], "sha256": "b323aaf9900a16055e29aa92c9e347dee5a77ffec8d6fdb2d7b141f018f58221"},
+    "city-cafe-link-research.png": {"dimensions": [1200, 280], "sha256": "a59a870af6523cb3668d7a00083da8b49c6bbcf2cdd135853ba4369a55307b88"},
+    "city-cafe-link-canticle.gif": {"dimensions": [600, 280], "sha256": "502347df849ad8cce6bb895e8e2af4b4ee92600190c857db264c0293c886c3aa"},
+    "city-cafe-link-canticle.png": {"dimensions": [600, 280], "sha256": "84c309ab6736967b6da75dd31d5fc3d6a0869d09ac1768fbda6d9e9545bd1f5d"},
+    "city-cafe-link-x.gif": {"dimensions": [600, 280], "sha256": "e6f86a7071b7e11d974e49a93bff69c299d3c7e573f450981c5a915106f125af"},
+    "city-cafe-link-x.png": {"dimensions": [600, 280], "sha256": "a5a122292484e2108c34eaf66f7ebf52007870654da9184ed1f8dbd207955666"},
+    "city-cafe-link-kofi.gif": {"dimensions": [600, 280], "sha256": "b424a4ac3afeb924837278b3ba0ac39a08e63a54e230bd11ad1c255b36fbd980"},
+    "city-cafe-link-kofi.png": {"dimensions": [600, 280], "sha256": "5fbba74feac668fd849529e7bff381561a024795b52ad87a968f76367a30fd4a"},
+    "city-cafe-link-coffee.gif": {"dimensions": [600, 280], "sha256": "6cf887700a25b5f4b03f698d80d5bd12142cf4bdddf3c5d7aca22c0396119206"},
+    "city-cafe-link-coffee.png": {"dimensions": [600, 280], "sha256": "51b7ac04e4c39002d1a83665c5d0fa4f1d3c8074b29647c3d8372810fb7c918d"},
+    "city-cafe-link-patreon.gif": {"dimensions": [1200, 280], "sha256": "6fc9aeb7ce54678d522893ee3e781224eac77305fffedd48501fb3fc6c5919df"},
+    "city-cafe-link-patreon.png": {"dimensions": [1200, 280], "sha256": "1762920b446ad2c4879079b3ed59d1dafbefbbc3229ef63fe00319c229d9ac2d"}
   }
 }
