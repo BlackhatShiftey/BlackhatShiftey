@@ -19,6 +19,9 @@ identity geometry.
 | `cyber-divider.gif` | Baked GitHub-safe loop of six shaded RGB cubes growing, tumbling off-axis, and emitting their own color glows above a quiet carrier line |
 | `canticle-profile-hero.png` | Static reduced-motion poster generated from the approved mascot source |
 | `canticle-profile-hero.gif` | Nine-second GitHub hero using the supplied articulated Ghost animation inside an invariant right-side window; no synthetic translation, rotation, scaling, bobbing, or whole-image motion |
+| `city-cafe-waving-hero.{gif,png}` | Operator-approved waving-host hero for the City Cafe layout; the GIF uses decoded articulated footage in a fixed frame and the PNG is its reduced-motion poster |
+| `city-cafe-link-{research,canticle,x,kofi,coffee,patreon}.{gif,png}` | Six independently clickable animated tiles and reduced-motion posters cut from one 600×736 Ghost-bunny café panorama; the exact crop partition has zero overlap and zero uncovered pixels |
+| `city-cafe-links.provenance.json` | Approval scope, source and output hashes, crop coordinates, animation settings, local toolchain, and honest OpenToonz/Resolve render boundaries |
 
 The Ghost source used AnimagineXL 3.1 at 1024×1024 with `dpmpp_2m`, the
 `karras` scheduler, 28 steps, CFG 6.5, and seed `20260820`. The full positive
@@ -37,3 +40,13 @@ assets. Its loop settings and output hash are recorded in
 requests reduced motion; the SVG preserves an editable static concept. RGB
 motion belongs to the individually colored cubes; the terminal carrier stays
 static and neutral.
+
+The City Cafe scene was built locally from a Blender EEVEE composition guide,
+a local AnimagineXL/ComfyUI background repaint, the operator-supplied waving
+footage, and the approved Ghost-bunny templates. Krita verified the layered
+panorama export; Pillow deterministically rendered all readable labels, brand
+marks, crop geometry, and GitHub-safe GIFs. OpenToonz-compatible levels were
+prepared but OpenToonz did not produce the delivered render. DaVinci Resolve
+launched locally but did not conform or render this asset. Those boundaries,
+the exact six-crop partition, and every published hash are recorded in
+`city-cafe-links.provenance.json`.

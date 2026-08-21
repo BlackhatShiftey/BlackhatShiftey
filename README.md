@@ -1,20 +1,15 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/canticle-profile-hero.png?v=ghost-articulated-1">
-  <source type="image/gif" srcset="./assets/canticle-profile-hero.gif?v=ghost-articulated-1">
-  <img src="./assets/canticle-profile-hero.png?v=ghost-articulated-1" alt="BlackhatShiftey with Ghost—the anime girl and her cute cat-like spirit forms—in the Canticle RGB research style" width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-waving-hero.png?v=city-cafe-1">
+  <source type="image/gif" srcset="./assets/city-cafe-waving-hero.gif?v=city-cafe-1">
+  <img src="./assets/city-cafe-waving-hero.png?v=city-cafe-1" alt="Ghost—the anime girl and her spirit companions—waving above the Canticle City Cafe" width="100%">
 </picture>
 
-<br>
-
-<a href="https://github.com/Canticle-AI-Research"><img src="./assets/canticle-logo.svg?v=canticle-anime-1" alt="Canticle AI Research" height="52"></a>
-
-<br>
-
-<a href="https://github.com/Canticle-AI-Research"><img src="./assets/link-research.svg?v=ghost-links-1" alt="Open the Canticle AI Research organization" height="52"></a>
-<a href="https://canticle.cc"><img src="./assets/link-canticle.svg?v=ghost-links-1" alt="Open Canticle.cc" height="52"></a>
-<a href="https://x.com/Ex0_Byte"><img src="./assets/link-x.svg?v=ghost-links-1" alt="Follow Ex0 Byte on X" height="52"></a>
+<a href="https://github.com/Canticle-AI-Research"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-research.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-research.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-research.png?v=city-cafe-1" alt="Open the Canticle AI Research organization" width="100%"></picture></a>
+<a href="https://canticle.cc"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-canticle.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-canticle.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-canticle.png?v=city-cafe-1" alt="Visit Canticle.cc" width="50%"></picture></a><a href="https://x.com/Ex0_Byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-x.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-x.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-x.png?v=city-cafe-1" alt="Follow Ex0 Byte on X" width="50%"></picture></a>
+<a href="https://ko-fi.com/terrabyte1000"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-kofi.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-kofi.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-kofi.png?v=city-cafe-1" alt="Support terrabyte1000 on Ko-fi" width="50%"></picture></a><a href="https://buymeacoffee.com/ex0_byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-coffee.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-coffee.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-coffee.png?v=city-cafe-1" alt="Support ex0_byte on Buy Me a Coffee" width="50%"></picture></a>
+<a href="https://www.patreon.com/cw/Ex0_Byte"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/city-cafe-link-patreon.png?v=city-cafe-1"><source type="image/gif" srcset="./assets/city-cafe-link-patreon.gif?v=city-cafe-1"><img src="./assets/city-cafe-link-patreon.png?v=city-cafe-1" alt="Join Ex0 Byte on Patreon" width="100%"></picture></a>
 
 </div>
 
@@ -138,15 +133,9 @@ question → smallest useful experiment → evidence
 
 ## `// support the work`
 
-If this work helps you build, research, or learn, a star or small contribution helps fund the next experiment.
+If this work helps you build, research, or learn, a star or a visit through the animated café routes above helps fund the next experiment.
 
 <div align="center">
-
-<a href="https://ko-fi.com/terrabyte1000"><img src="./assets/link-kofi.svg?v=ghost-links-1" alt="Support on Ko-fi" height="52"></a>
-<a href="https://www.patreon.com/cw/Ex0_Byte"><img src="./assets/link-patreon.svg?v=ghost-links-1" alt="Support on Patreon" height="52"></a>
-<a href="https://buymeacoffee.com/ex0_byte"><img src="./assets/link-coffee.svg?v=ghost-links-1" alt="Support on Buy Me a Coffee" height="52"></a>
-
-<br>
 
 <img src="./assets/ghost-cameo.png?v=ghost-square-3" alt="Ghost—the anime girl and her cute cat-like spirit forms" width="170">
 
