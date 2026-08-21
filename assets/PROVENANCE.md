@@ -21,7 +21,7 @@ identity geometry.
 | `canticle-profile-hero.gif` | Nine-second GitHub hero using the supplied articulated Ghost animation inside an invariant right-side window; no synthetic translation, rotation, scaling, bobbing, or whole-image motion |
 | `city-cafe-waving-hero.{gif,png}` | Superseded first City Cafe waving-host treatment; retained locally for non-destructive history but no longer referenced by the correction draft |
 | `city-cafe-waving-cameo.{gif,png}` | Clean 512×512 direct waving loop and reduced-motion poster for the bottom support cameo; no bars, inset frame, border, or baked copy |
-| `city-cafe-link-{research,canticle,x,kofi,coffee,patreon}.{gif,png}` | Six compact independently clickable 2× animated tiles and reduced-motion posters cut from one 1200×1120 Ghost-bunny café panorama; the exact crop partition has zero overlap and zero uncovered pixels, the Research tile uses the transparent official Canticle prompt mark, and the grid is displayed at 84/42 percent below the waving cameo |
+| `city-cafe-link-{research,canticle,x,kofi,coffee,patreon}.{gif,png}` | Six compact independently clickable 2× code-route modules and reduced-motion posters cut from one 1200×1120 Ghost-bunny café panorama; the exact symmetric crop partition has zero overlap and zero uncovered pixels, the Canticle/X row uses a grounded continuous console instead of floating tables, each route has a distinct animated signal and official mark, and the grid is displayed at 84/42 percent below the waving cameo |
 | `city-cafe-links.provenance.json` | Approval scope, source and output hashes, crop coordinates, animation settings, local toolchain, and honest OpenToonz/Resolve render boundaries |
 
 The Ghost source used AnimagineXL 3.1 at 1024×1024 with `dpmpp_2m`, the
@@ -48,8 +48,13 @@ footage, and the approved Ghost-bunny templates. Official source logos for X,
 Ko-fi, Buy Me a Coffee, and Patreon are registered in the isolated Canticle.cc
 asset-library worktree with source URLs and hashes. Krita exported the canonical
 Canticle lockup; Pillow deterministically rendered all readable labels, official
-marks, crop geometry, and GitHub-safe GIFs. OpenToonz-compatible levels were
+marks, code-route geometry, six distinct activity signals, and GitHub-safe GIFs.
+GitHub profile READMEs do not expose page-level CSS or JavaScript hover effects;
+the linked cards therefore use native pointer behavior and destination tooltips,
+while their color-specific glow and activity remain baked into independent loops.
+OpenToonz-compatible levels were
 prepared but OpenToonz did not produce the delivered render. DaVinci Resolve
 launched locally but did not conform or render this asset. Those boundaries,
-the exact six-crop partition, and every correction-draft hash are recorded in
-`city-cafe-links.provenance.json`. The correction remains unapproved and local.
+the exact six-crop partition, and every publication hash are recorded in
+`city-cafe-links.provenance.json`. This correction is approved for the
+BlackhatShiftey GitHub profile.

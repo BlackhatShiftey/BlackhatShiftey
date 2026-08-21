@@ -1,8 +1,8 @@
 {
   "approval": {
-    "state": "unapproved correction preview",
-    "created_at": "2026-08-20",
-    "scope": "restore prior profile banner, place the waving cameo before the links, and compact six cafe tiles at 2x with official platform marks"
+    "state": "approved for BlackhatShiftey GitHub profile publication",
+    "created_at": "2026-08-21",
+    "scope": "redesign the symmetric six-card cafe grid as grounded code-route modules with official platform marks and distinct per-card motion"
   },
   "composition": {
     "profile_banner": "canticle-profile-hero.{gif,png}",
@@ -31,8 +31,13 @@
     "cameo_gif_frames": 36,
     "frame_duration_ms": 84,
     "loop": "infinite",
-    "motion": "subtle uniform logo pulse, bobbing Ghost-bunny patrons, steam, particles, and direct operator-supplied waving footage",
-    "fixed_elements": "destination labels, route text, tile geometry, official mark proportions, and click boundaries"
+    "motion": "logo pulse, bobbing Ghost-bunny patrons, steam, particles, and a distinct animated code signal for each destination",
+    "fixed_elements": "destination labels, code routes, symmetric tile geometry, official mark proportions, and click boundaries"
+  },
+  "interaction": {
+    "github_boundary": "profile README images cannot run page-level CSS or JavaScript hover transforms",
+    "available_hover": "each anchor exposes a destination-specific title tooltip and the browser's native link cursor",
+    "visual_feedback": "each independent GIF continuously animates its own accent glow, official logo, and unique code signal"
   },
   "sources": {
     "waving_host_video_sha256": "84cbd6313397ccccc576c2c8829d2d98e3e48c1804bf4e6a1f18f84c7bce15f8",
@@ -51,7 +56,7 @@
     "blender": "5.2.0 LTS EEVEE composition guide from the approved cafe source",
     "comfyui": "0.33.0 with local AnimagineXL 3.1 background source",
     "krita": "5.3.3 SVG export for the canonical Canticle lockup",
-    "pillow": "2x deterministic label, official-logo, crop, cameo and animation composition",
+    "pillow": "2x deterministic code-card layout, official-logo, crop, cameo and individualized animation composition",
     "ffmpeg": "6.1.1 source decode, AVIF working conversion and review encoding",
     "opentoonz": "1.8.0-compatible levels available from the source draft; no OpenToonz-rendered output",
     "davinci_resolve": "21.0.4 local launch previously verified; no Resolve conform or render"
@@ -59,17 +64,17 @@
   "outputs": {
     "city-cafe-waving-cameo.gif": {"dimensions": [512, 512], "sha256": "992eca8294994ad976183a9bacd04a8da4dee61adc0f9a97214e4f926e6ca036"},
     "city-cafe-waving-cameo.png": {"dimensions": [512, 512], "sha256": "f30c7c3bd13ef00aad338639ed1df6ecc275aa6d79c31a1f2e3c3870185adb09"},
-    "city-cafe-link-research.gif": {"dimensions": [1200, 280], "sha256": "b323aaf9900a16055e29aa92c9e347dee5a77ffec8d6fdb2d7b141f018f58221"},
-    "city-cafe-link-research.png": {"dimensions": [1200, 280], "sha256": "a59a870af6523cb3668d7a00083da8b49c6bbcf2cdd135853ba4369a55307b88"},
-    "city-cafe-link-canticle.gif": {"dimensions": [600, 280], "sha256": "502347df849ad8cce6bb895e8e2af4b4ee92600190c857db264c0293c886c3aa"},
-    "city-cafe-link-canticle.png": {"dimensions": [600, 280], "sha256": "84c309ab6736967b6da75dd31d5fc3d6a0869d09ac1768fbda6d9e9545bd1f5d"},
-    "city-cafe-link-x.gif": {"dimensions": [600, 280], "sha256": "e6f86a7071b7e11d974e49a93bff69c299d3c7e573f450981c5a915106f125af"},
-    "city-cafe-link-x.png": {"dimensions": [600, 280], "sha256": "a5a122292484e2108c34eaf66f7ebf52007870654da9184ed1f8dbd207955666"},
-    "city-cafe-link-kofi.gif": {"dimensions": [600, 280], "sha256": "b424a4ac3afeb924837278b3ba0ac39a08e63a54e230bd11ad1c255b36fbd980"},
-    "city-cafe-link-kofi.png": {"dimensions": [600, 280], "sha256": "5fbba74feac668fd849529e7bff381561a024795b52ad87a968f76367a30fd4a"},
-    "city-cafe-link-coffee.gif": {"dimensions": [600, 280], "sha256": "6cf887700a25b5f4b03f698d80d5bd12142cf4bdddf3c5d7aca22c0396119206"},
-    "city-cafe-link-coffee.png": {"dimensions": [600, 280], "sha256": "51b7ac04e4c39002d1a83665c5d0fa4f1d3c8074b29647c3d8372810fb7c918d"},
-    "city-cafe-link-patreon.gif": {"dimensions": [1200, 280], "sha256": "6fc9aeb7ce54678d522893ee3e781224eac77305fffedd48501fb3fc6c5919df"},
-    "city-cafe-link-patreon.png": {"dimensions": [1200, 280], "sha256": "1762920b446ad2c4879079b3ed59d1dafbefbbc3229ef63fe00319c229d9ac2d"}
+    "city-cafe-link-research.gif": {"dimensions": [1200, 280], "sha256": "0baab3742f0995ead2f3f7f1201e3db1b131f6494117d1a923c690411b189698"},
+    "city-cafe-link-research.png": {"dimensions": [1200, 280], "sha256": "c433a851a0ff8ab6c620128855866a401aaae9f13a1431cc64aac54c222b3a49"},
+    "city-cafe-link-canticle.gif": {"dimensions": [600, 280], "sha256": "9adb69e68ce0673c478e1d40858bb9f517f3807597cc39f1d449232d03996438"},
+    "city-cafe-link-canticle.png": {"dimensions": [600, 280], "sha256": "6268ee1c1e2d8853f479604fc4bd250312a19d40cd378c955be3d5e8d5d2c85d"},
+    "city-cafe-link-x.gif": {"dimensions": [600, 280], "sha256": "7f8ecf94206904176e140644139f689e2117ca688b466d29dc9f1695bc3cac83"},
+    "city-cafe-link-x.png": {"dimensions": [600, 280], "sha256": "34d6798a8a706d0b6b28f9603fee6a86f47f11fe688de681bf4ead954d301ea2"},
+    "city-cafe-link-kofi.gif": {"dimensions": [600, 280], "sha256": "b9e5586fa6ebfaeb5650632c6896acd5b4e6a3d2e685bdb56ac033fe7a6b7cf7"},
+    "city-cafe-link-kofi.png": {"dimensions": [600, 280], "sha256": "1d59804781eebc146af46cf457aeec41f4476bc5abeb3b1393dc1f5834de7a83"},
+    "city-cafe-link-coffee.gif": {"dimensions": [600, 280], "sha256": "8336977b77a11d384e8545afc4e18762ce21cb727139ca49a0e726b9fd6321b6"},
+    "city-cafe-link-coffee.png": {"dimensions": [600, 280], "sha256": "24e5c4416a11a3001f39407cb6330a7221ade5147da8d460b2e64c0f4bc20aeb"},
+    "city-cafe-link-patreon.gif": {"dimensions": [1200, 280], "sha256": "c48e5347c0c527d43fcae93ccaa4cda912b74b0bda44dbdd334500f4381ee5db"},
+    "city-cafe-link-patreon.png": {"dimensions": [1200, 280], "sha256": "67dced7772fa12439b0a267ecc3b6bdec1464712e7c212f7d8eda3503be76796"}
   }
 }
